@@ -1,0 +1,33 @@
+%p
+  %strong Name:
+  = @category.name
+
+  %strong Created by:
+  = @created_by.name
+
+Topics:
+
+- if @associated_topics.present?
+  %table
+    %thead
+      %tr
+        %th Name
+        %th{colspan: "3"}
+
+    %tbody
+      - @associated_topics.each do |topic|
+        %tr
+          %td
+            = topic.name
+          %td
+            = link_to 'Show', topic
+- else
+  "None"
+
+%br
+
+= link_to 'New Category', new_category_path
+|
+= link_to 'Edit', edit_category_path(@category)
+|
+= link_to 'Back', categories_path

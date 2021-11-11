@@ -3,12 +3,15 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.order(:name)
   end
 
   def show
+
+    @created_by = @category.user
+
     if @category.topics.empty?
-      @associated_topics = 'None'
+      @associated_topics = nil
     else
       @associated_topics = @category.topics
     end
