@@ -11,6 +11,18 @@
   = @user.role.name
 
 %p
+  %strong Joined on:
+  = @joined_on
+
+%p
+  %strong Last logged in on:
+  = @last_login
+
+%p
+  %strong Sign in count:
+  = @user.sign_in_count
+
+%p
   %strong Associated topics:
   = @associated_topics
 
