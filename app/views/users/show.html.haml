@@ -1,0 +1,19 @@
+%p
+  %strong Name:
+  = @user.name
+
+%p
+  %strong Role:
+  = @user.role.name
+
+%p
+  %strong Associated topics:
+  = @associated_topics
+
+%p
+  %strong Associated categories:
+  = @associated_categories
+
+= link_to 'Edit', edit_user_path(@user)
+|
+= link_to 'Back', users_path

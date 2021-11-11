@@ -8,7 +8,7 @@ class RolesController < ApplicationController
 
   def show
     if @role.users.empty?
-      @associated_user = 'None'
+      @associated_users = 'None'
     else
       @associated_users = @role.users.map(&:name).join(', ')
     end
