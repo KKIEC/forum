@@ -5,6 +5,7 @@
     %tr
       %th Name
       %th Role
+      %th Email
       %th{colspan: "3"}
 
   %tbody
@@ -12,6 +13,8 @@
       %tr
         %td
           = user.name
+        %td
+          = user.email
         %td
           = user.role.name
         %td
