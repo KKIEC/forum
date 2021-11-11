@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get 'welcome/index'
 
 
   resources :roles
-  resources :users
+
+  scope '/admin' do
+    resources :users
+  end
+
   resources :topics
   resources :categories
   resources :posts
