@@ -1,0 +1,26 @@
+= form_with(model: topic) do |form|
+  - if topic.errors.any?
+    %div{id: "error_explanation"}
+      %h2
+        = pluralize(topic.errors.count, "error")
+        prohibited this topic from being saved:
+
+      %ul
+        - topic.errors.full_messages.each do |message|
+          %li
+            - message
+
+  %div{class: "field"}
+    = form.label :name
+    = form.text_field :name
+
+  %div{class: "field"}
+    = form.label :description
+    = form.text_field :description
+
+  %div{class: "sel_field"}
+    = form.label "Select category:"
+    = form.collection_check_boxes :category_ids, @categories, :id, :name
+
+  %div{class: "actions"}
+    = form.submit

@@ -9,12 +9,8 @@ class CategoriesController < ApplicationController
   def show
 
     @created_by = @category.user
-
-    if @category.topics.empty?
-      @associated_topics = nil
-    else
-      @associated_topics = @category.topics
-    end
+    @associated_topics = @category.topics
+    
   end
 
   def new
