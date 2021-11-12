@@ -2,7 +2,6 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_topic, only: [:show, :update, :destroy]
 
   def show
@@ -10,7 +9,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
     @topic_ref = params[:topic_ref]
   end
 
@@ -19,7 +17,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
     @post.user_id = current_user.id
 
     if @post.save
@@ -43,10 +40,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
     def post_params
       params.require(:post).permit(

@@ -2,7 +2,6 @@ class TopicsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:new, :edit]
 
   def index
@@ -14,14 +13,11 @@ class TopicsController < ApplicationController
     @associated_posts = @topic.posts
   end
 
-  def new
-    @topic = Topic.new
-  end
+  def new; end
 
   def edit; end
 
   def create
-    @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
 
     if @topic.save
@@ -48,10 +44,6 @@ class TopicsController < ApplicationController
 
     def set_categories
       @categories = Category.order(:name)
-    end
-
-    def set_topic
-      @topic = Topic.find(params[:id])
     end
 
     def topic_params

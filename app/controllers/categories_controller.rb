@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
     @categories = Category.all.order(:name)
@@ -15,14 +14,11 @@ class CategoriesController < ApplicationController
 
   end
 
-  def new
-    @category = Category.new
-  end
+  def new; end
 
   def edit; end
 
   def create
-    @category = Category.new(category_params)
     @category.user_id = current_user.id
 
     if @category.save
@@ -46,10 +42,6 @@ class CategoriesController < ApplicationController
   end
 
   private
-
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
     def category_params
       params.require(:category).permit(:name, :user_id)
