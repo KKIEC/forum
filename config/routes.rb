@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  resources :topics
   resources :categories
-  resources :posts
+  resources :topics
+  resources :posts, except: :index
 
   root to: 'welcome#index'
 

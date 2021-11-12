@@ -1,0 +1,7 @@
+%h1 Editing Post
+
+= render 'form', post: @post, topic_ref: @topic_ref
+
+= link_to 'Show', post_path(@post)
+|
+= link_to 'Back', topic_path(@topic_ref)

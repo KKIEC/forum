@@ -28,8 +28,16 @@ Posts:
             = post.body
           %td
             = link_to 'Show', post
+          %td
+            = link_to 'Edit', edit_post_path(post)
+          %td
+            = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
 - else
   "None"
+
+%br
+
+= link_to 'Add post', controller: "posts", action: "new", topic_ref: @topic
 
 %br
 
