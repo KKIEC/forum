@@ -15,4 +15,16 @@ class User < ApplicationRecord
     self.role = Role.find_by name: 'User' if role.nil?
   end
 
+  def admin?
+    role.name == 'Admin'
+  end
+
+  def member?
+    role.name == 'Member'
+  end
+
+  def novice?
+    role.name == 'Novice'
+  end
+
 end
