@@ -1,1 +1,7 @@
 %h1{class: "display-2"} Welcome to the Forum!
+
+- if user_signed_in?
+
+  = link_to 'Categories', categories_path
+  |
+  = link_to 'Topics', topics_path
