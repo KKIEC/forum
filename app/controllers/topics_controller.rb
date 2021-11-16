@@ -2,10 +2,10 @@ class TopicsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_categories, only: [:new, :edit]
+  before_action :set_categories, only: [:new, :edit, :index]
 
   def index
-    @topics = Topic.all.order(:name)
+    @topics = Topic.search(params[:search])
   end
 
   def show
