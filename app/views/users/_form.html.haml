@@ -1,7 +1,7 @@
 = form_with(model: user) do |form|
   - if user.errors.any?
-    %div{id: "error_explanation"}
-      %h2
+    %div{class: "alert alert-danger"}
+      %h3
         = pluralize(user.errors.count, "error")
         prohibited this user from being saved:
 
@@ -10,21 +10,34 @@
           %li
             = message
 
-  %div{class: "field"}
-    = form.label :name
-    = form.text_field :name
+  %div{class: "card"}
+    %div{class: "mb-2 mt-3"}
+      %h5
+        = form.label :name, "Name:"
+      %p
+        = form.text_field :name
 
-  %div{class: "field"}
-    = form.label :email
-    = form.text_field :email
+    %div{class: "mb-2"}
+      %h5
+        = form.label :email, "Email:"
+      %p
+        = form.text_field :email
 
-  %div{class: "field"}
-    = form.label :password
-    = form.password_field :password, placeholder: "Leave blank if unchanged"
+    %div{class: "mb-2"}
+      %h5
+        = form.label :password, "Password:"
+      %h5
+        = form.password_field :password, placeholder: "Leave blank if unchanged"
 
-  %div{class: "field"}
-    = form.label :role_id
-    = collection_select(:user, :role_id, Role.all, :id, :name, { prompt: true })
+    %div{class: "mb-2"}
+      %h5
+        = form.label :role_id, "Select role:"
+      %p
+        = collection_select(:user, :role_id, Role.all,
+        :id,
+        :name,
+        { prompt: true },
+        class: "btn btn-light dropdown-toggle")
 
-  %div{class: "actions"}
-    = form.submit
+    %div{class: "mb-3"}
+      = form.submit class: "btn btn-success"

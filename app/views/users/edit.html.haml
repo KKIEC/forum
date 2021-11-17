@@ -1,7 +1,9 @@
-%h1 Editing User
+%div{class: "container-fluid mt-3 mb-3 text-center"}
+  %h2 Edit user:
 
-= render 'form', user: @user
+  = render 'form', user: @user
 
-= link_to 'Show', @user
-|
-= link_to 'Back', users_path
+%div{class: "container text-center"}
+  = link_to 'Show', @user, class: "btn btn-primary"
+  |
+  = link_to 'Back', users_path, class: "btn btn-primary"

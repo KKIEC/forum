@@ -12,7 +12,7 @@
 
   <body>
     <header>
-      <div class="p-2 bg-primary text-white text-center">
+      <div class="container-fluid p-2 bg-primary text-white text-center">
         <h1>Forum</h1>
           <p>
             <% if user_signed_in? %>
@@ -55,12 +55,14 @@
         </div>
       </nav>
 
-
-
     </header>
 
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% if name=="error" %>
+        <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-danger" %>
+      <% else %>
+        <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-success" %>
+      <% end %>
     <% end %>
 
     <main>

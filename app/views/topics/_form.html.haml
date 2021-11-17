@@ -1,7 +1,7 @@
 = form_with(model: topic) do |form|
   - if topic.errors.any?
-    %div{id: "error_explanation"}
-      %h2
+    %div{class: "alert alert-danger"}
+      %h3
         = pluralize(topic.errors.count, "error")
         prohibited this topic from being saved:
 
@@ -10,17 +10,27 @@
           %li
             = message
 
-  %div{class: "field"}
-    = form.label :name
-    = form.text_field :name
+  %div{class: "card"}
+    %div{class: "mb-2 mt-3"}
+      %h5
+        = form.label :name, "Name:"
+      %p
+        = form.text_field :name
 
-  %div{class: "field"}
-    = form.label :description
-    = form.text_field :description
+    %div{class: "mb-2"}
+      %h5
+        = form.label :description, "Description:"
+      %p
+        = form.text_field :description
 
-  %div{class: "sel_field"}
-    = form.label "Select category:"
-    = form.collection_check_boxes :category_ids, @categories, :id, :name
+    %div{class: "mb-2"}
+      %h5
+        = form.label :category_ids, "Select category:"
+      %p
+        = form.collection_check_boxes(:category_ids, @categories, :id, :name) do |b|
+          %p{class: "mb-1"}
+            = b.check_box
+            = b.label
 
-  %div{class: "actions"}
-    = form.submit
+    %div{class: "mb-3"}
+      = form.submit class: "btn btn-success"

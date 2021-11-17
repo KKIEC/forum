@@ -12,7 +12,7 @@ class User < ApplicationRecord
   before_save :assign_role
 
   def assign_role
-    self.role = Role.find_by name: 'User' if role.nil?
+    self.role = Role.find_by name: 'Novice' if role.nil?
   end
 
   def admin?

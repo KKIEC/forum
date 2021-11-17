@@ -1,7 +1,7 @@
 = form_with(model: role) do |form|
   - if role.errors.any?
-    %div{id: "error_explanation"}
-      %h2
+    %div{class: "alert alert-danger"}
+      %h3
         = pluralize(role.errors.count, "error")
         prohibited this role from being saved:
 
@@ -10,13 +10,18 @@
           %li
             = message
 
-  %div{class: "field"}
-    = form.label :name
-    = form.text_field :name
+  %div{class: "card"}
+    %div{class: "mb-2 mt-3"}
+      %h5
+        = form.label :name, "Name:"
+      %p
+        = form.text_field :name
 
-  %div{class: "field"}
-    = form.label :description
-    = form.text_field :description
+    %div{class: "mb-2"}
+      %h5
+        = form.label :description, "Description:"
+      %p
+        = form.text_area :description, rows: "5"
 
-  %div{class: "actions"}
-    = form.submit
+    %div{class: "mb-3"}
+      = form.submit class: "btn btn-success"

@@ -1,35 +1,39 @@
-%p
-  %strong Name:
-  = @user.name
+%div{class: "container mt-3"}
+  %h2 User:
 
-%p
-  %strong Email:
-  = @user.email
+  %div{class: "card p-3 mb-3"}
+    %p
+      %strong Name:
+      = @user.name
 
-%p
-  %strong Role:
-  = @user.role.name
+    %p
+      %strong Email:
+      = @user.email
 
-%p
-  %strong Joined on:
-  = @joined_on
+    %p
+      %strong Role:
+      = @user.role.name
 
-%p
-  %strong Last logged in on:
-  = @last_login
+    %p
+      %strong Joined on:
+      = @joined_on
 
-%p
-  %strong Sign in count:
-  = @user.sign_in_count
+    %p
+      %strong Last logged in on:
+      = @last_login
 
-%p
-  %strong Associated topics:
-  = @associated_topics
+    %p
+      %strong Sign in count:
+      = @user.sign_in_count
 
-%p
-  %strong Associated categories:
-  = @associated_categories
+    %p
+      %strong Associated topics:
+      = @associated_topics
 
-= link_to 'Edit', edit_user_path(@user)
-|
-= link_to 'Back', users_path
+    %p
+      %strong Associated categories:
+      = @associated_categories
+
+  = link_to 'Edit', edit_user_path(@user), class: "btn btn-primary"
+  |
+  = link_to 'Back', users_path, class: "btn btn-primary"

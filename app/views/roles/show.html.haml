@@ -1,15 +1,19 @@
-%p
-  %strong Name:
-  = @role.name
+%div{class: "container mt-3"}
+  %h2 Role:
 
-%p
-  %strong Description:
-  = @role.description
+  %div{class: "card p-3 mb-3"}
+    %p
+      %strong Name:
+      = @role.name
 
-%p
-  %strong Associated users:
-  = @associated_users
+    %p
+      %strong Description:
+      = @role.description
 
-= link_to 'Edit', edit_role_path(@role)
-|
-= link_to 'Back', roles_path
+    %p
+      %strong Associated users:
+      = @associated_users
+
+  = link_to 'Edit', edit_role_path(@role), class: "btn btn-primary"
+  |
+  = link_to 'Back', roles_path, class: "btn btn-primary"
