@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_categories, only: [:new, :edit, :index]
+  before_action :set_categories, only: [:new, :create, :edit, :update, :index]
 
   def index
     @topics = Topic.search(params[:search])

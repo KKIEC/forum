@@ -4,6 +4,9 @@ class Topic < ApplicationRecord
   has_many :categories, through: :categorizations
   has_many :posts, dependent: :destroy
 
+  validates :name, presence: true
+  validates :description, presence: true
+
   def self.search(search)
     if search
       where("name LIKE ?", "%#{search}%")
