@@ -15,14 +15,15 @@
   %h3
     Discussion:
 
+%div{class: "container col-8 text-center"}
   - if @associated_posts.present?
     - @associated_posts.each do |post|
-      %div{class: "card"}
-        %h5
+      %div{class: "card p-2 m-1"}
+        %h5{style: "text-align: left"}
           = post.name
-        %p
+        %p{style: "text-align: left"}
           = post.body
-        %p
+        %p{style: "text-align: right"}
           = link_to 'Details', post, class: "btn btn-outline-primary"
           - if can? :update, post
             |
@@ -36,7 +37,7 @@
     %p
       "None"
 
-  %div{class: "container mb-3"}
+  %div{class: "container mb-3 mt-3"}
     = link_to 'Add post', {controller: "posts", action: "new", topic_ref: @topic},
     class: "btn btn-success"
     |

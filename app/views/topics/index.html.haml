@@ -6,17 +6,18 @@
       %h5
         = f.label :search, "Search by name:"
       %p
-        = f.text_field :search
+        = f.text_field :search, class: "container col-4"
     %div{class: "mb-3"}
       = f.submit "Search", name: nil, class: "btn btn-secondary"
 
+%div{class: "container col-12 text-center"}
   %table{class: "table table-bordered table-hover"}
     %thead{class: "table-primary"}
       %tr
-        %th Name
-        %th Description
-        %th Categories
-        %th{style: "text-align: center", colspan: "3"} Allowable actions
+        %th{class: "col-2"} Name
+        %th{class: "col-6"} Description
+        %th{class: "col-2"} Categories
+        %th{style: "text-align: center", colspan: "3", class: "col-2"} Allowable actions
 
     %tbody
       - @topics.each do |topic|

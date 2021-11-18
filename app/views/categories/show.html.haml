@@ -10,13 +10,14 @@
   %h3
     Topics:
 
+%div{class: "container col-8 text-center"}
   - if @associated_topics.present?
     %table{class: "table table-bordered table-hover"}
       %thead{class: "table-primary"}
         %tr
-          %th Name
-          %th Description
-          %th{style: "text-align: center", colspan: "3"} Action
+          %th{class: "col-3"} Name
+          %th{class: "col-8"} Description
+          %th{style: "text-align: center", colspan: "3", class: "col-1"} Action
 
       %tbody
         - @associated_topics.each do |topic|

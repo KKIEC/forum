@@ -1,4 +1,4 @@
-<div class="container-fluid mt-3 mb-3 text-center">
+<div class="container-fluid mt-3 mb-3 text-center col-4">
   <h2>Log in:</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -8,7 +8,7 @@
           <%= f.label :email, "Email:" %>
         </h5>
         <p>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "container col-8" %>
         </p>
       </div>
 
@@ -17,7 +17,7 @@
           <%= f.label :password, "Password:" %>
         </h5>
         <p>
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "container col-8" %>
         </p>
         <p>
           <% if devise_mapping.rememberable? %>

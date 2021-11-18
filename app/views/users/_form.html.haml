@@ -15,19 +15,21 @@
       %h5
         = form.label :name, "Name:"
       %p
-        = form.text_field :name
+        = form.text_field :name, class: "container col-8"
 
     %div{class: "mb-2"}
       %h5
         = form.label :email, "Email:"
       %p
-        = form.text_field :email
+        = form.text_field :email, class: "container col-8"
 
     %div{class: "mb-2"}
       %h5
         = form.label :password, "Password:"
       %p
-        = form.password_field :password, placeholder: "Leave blank if unchanged"
+        = form.password_field :password,
+        placeholder: "Leave blank if unchanged",
+        class: "container col-8"
 
     %div{class: "mb-2"}
       %h5
@@ -37,7 +39,7 @@
         :id,
         :name,
         { prompt: true },
-        class: "btn btn-light dropdown-toggle")
+        class: "btn btn-secondary dropdown-toggle col-8")
 
     %div{class: "mb-3"}
       = form.submit class: "btn btn-success"

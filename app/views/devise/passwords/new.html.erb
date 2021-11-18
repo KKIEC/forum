@@ -1,4 +1,4 @@
-<div class="container-fluid mt-3 mb-3 text-center">
+<div class="container-fluid mt-3 mb-3 text-center col-4">
   <h2>Forgot your password?</h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -10,7 +10,7 @@
           <%= f.label :email, "Email:" %>
         </h5>
         <p>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "container col-8" %>
         </p>
       </div>
 

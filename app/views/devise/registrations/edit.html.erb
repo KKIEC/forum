@@ -1,16 +1,16 @@
-<div class="container-fluid mt-3 mb-3 text-center">
+<div class="container-fluid mt-3 mb-3 text-center col-4">
   <h2>Edit <%= resource_name.to_s.humanize %>:</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="card">
+    <div class="card mb-3">
       <div class="mb-2 mt-3">
         <h5>
           <%= f.label :name, "Name:" %>
         </h5>
         <p>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "container col-8" %>
         </p>
       </div>
 
@@ -19,7 +19,7 @@
           <%= f.label :email, "Email:" %>
         </h5>
         <p>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "container col-8" %>
         </p>
       </div>
 
@@ -34,7 +34,7 @@
         <p>
           <i>(leave blank if you don't want to change it)</i>
           <br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "container col-8" %>
           <% if @minimum_password_length %>
             <br />
             <em><%= @minimum_password_length %> characters minimum</em>
@@ -47,7 +47,7 @@
           <%= f.label :password_confirmation, "Password confirmation:" %>
         </h5>
         <p>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "container col-8" %>
         </p>
       </div>
 
@@ -58,7 +58,7 @@
         <p>
           <i>(we need your current password to confirm your changes)</i>
           <br />
-          <%= f.password_field :current_password, autocomplete: "current-password" %>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "container col-8" %>
         </p>
       </div>
 

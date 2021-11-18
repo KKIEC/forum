@@ -15,13 +15,13 @@
       %h5
         = form.label :name, "Name:"
       %p
-        = form.text_field :name
+        = form.text_area :name, rows: "3", class: "container col-11"
 
     %div{class: "mb-2"}
       %h5
         = form.label :body, "Post:"
       %p
-        = form.text_area :body, rows: "10"
+        = form.text_area :body, rows: "10", class: "container col-11"
 
     = form.hidden_field :topic_id, value: topic_ref
 

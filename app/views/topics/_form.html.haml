@@ -15,13 +15,13 @@
       %h5
         = form.label :name, "Name:"
       %p
-        = form.text_field :name
+        = form.text_area :name, rows: "2", class: "container col-11"
 
-    %div{class: "mb-2"}
+    %div{class: "mb-2 col-12"}
       %h5
         = form.label :description, "Description:"
       %p
-        = form.text_field :description
+        = form.text_area :description, rows: "5", class: "container col-11"
 
     %div{class: "mb-2"}
       %h5

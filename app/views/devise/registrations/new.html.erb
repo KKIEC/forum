@@ -1,4 +1,4 @@
-<div class="container-fluid mt-3 mb-3 text-center">
+<div class="container-fluid mt-3 mb-3 text-center col-4">
   <h2>Sign up:</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -10,7 +10,7 @@
           <%= f.label :name, "Name:" %>
         </h5>
         <p>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "container col-8" %>
         </p>
       </div>
 
@@ -19,7 +19,7 @@
           <%= f.label :email, "Email:" %>
         </h5>
         <p>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "container col-8" %>
         </p>
       </div>
 
@@ -31,7 +31,7 @@
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "container col-8" %>
         </p>
       </div>
 
@@ -40,7 +40,7 @@
           <%= f.label :password_confirmation, "Password confirmation:" %>
         </h5>
         <p>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "container col-8" %>
         </p>
       </div>
 
