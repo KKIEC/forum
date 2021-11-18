@@ -1,39 +1,48 @@
-%div{class: "container mt-3"}
+%div{class: "container mt-3 text-center"}
   %h2 User:
 
   %div{class: "card p-3 mb-3"}
-    %p
+    %h5
       %strong Name:
+    %p
       = @user.name
 
-    %p
+    %h5
       %strong Email:
+    %p
       = @user.email
 
-    %p
+    %h5
       %strong Role:
+    %p
       = @user.role.name
 
-    %p
+    %h5
       %strong Joined on:
+    %p
       = @joined_on
 
-    %p
+    %h5
       %strong Last logged in on:
+    %p
       = @last_login
 
-    %p
+    %h5
       %strong Sign in count:
+    %p
       = @user.sign_in_count
 
-    %p
+    %h5
       %strong Associated topics:
+    %p
       = @associated_topics
 
-    %p
+    %h5
       %strong Associated categories:
+    %p
       = @associated_categories
-
+      
+%div{class: "container text-center mb-3"}
   = link_to 'Edit', edit_user_path(@user), class: "btn btn-primary"
   |
   = link_to 'Back', users_path, class: "btn btn-primary"

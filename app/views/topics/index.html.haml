@@ -40,6 +40,6 @@
               data: { confirm: 'Are you sure?' },
               class: "btn btn-outline-danger"
 
-  %p
+  %div{class: "container mb-3"}
     - if can? :create, Topic
       = link_to 'New Topic', new_topic_path, class: "btn btn-success"
