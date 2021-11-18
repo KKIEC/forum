@@ -1,45 +1,50 @@
-%p
-  %strong Name:
-  = @topic.name
+%div{class: "container mt-3 mb-3 text-center"}
 
-%p
-  %strong Description:
-  = @topic.description
+  %h2{class: "mb-3"}
+    = @topic.name
 
-  %strong Created by:
-  = @created_by.name
+  %p
+    %strong Created by:
+    = @created_by.name
 
-Posts:
+  %p
+    %strong Description:
+  %p
+    = @topic.description
 
-- if @associated_posts.present?
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Body
-        %th{colspan: "3"}
 
-    %tbody
+  %h3
+    Posts:
+
+  - if @associated_posts.present?
+    %table{class: "table table-bordered table-hover"}
       - @associated_posts.each do |post|
-        %tr
-          %td
-            = post.name
-          %td
-            = post.body
-          %td
-            = link_to 'Show', post
-          %td
-            - if can? :update, post
-              = link_to 'Edit', edit_post_path(post)
-          %td
-            - if can? :destroy, post
-              = link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }
-- else
-  "None"
+        %thead{class: "table-primary"}
+          %tr
+            %th{colspan: "4"}
+              = post.name
 
-%br
+          %tbody
+            %tr{style: "vertical-align: middle"}
+              %td
+                = post.body
+              %td
+                = link_to 'Details', post, class: "btn btn-outline-primary"
+              %td
+                - if can? :update, post
+                  = link_to 'Edit', edit_post_path(post), class: "btn btn-outline-primary"
+              %td
+                - if can? :destroy, post
+                  = link_to 'Delete', post_path(post), method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: "btn btn-outline-danger"
+  - else
+    %p
+      "None"
 
-= link_to 'Add post', controller: "posts", action: "new", topic_ref: @topic
-|
-- if can? :update, @topic
-  = link_to 'Edit', edit_topic_path(@topic)
+  %p
+    = link_to 'Add post', {controller: "posts", action: "new", topic_ref: @topic},
+    class: "btn btn-success"
+    |
+    - if can? :update, @topic
+      = link_to 'Edit', edit_topic_path(@topic), class: "btn btn-primary"

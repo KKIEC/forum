@@ -1,42 +1,45 @@
-%h1 Topics
+%div{class: "container mt-3 mb-3 text-center"}
+  %h2 Topics:
 
+  = form_with url: topics_path, method: :get do |f|
+    %div{class: "container text-center"}
+      %h5
+        = f.label :search, "Search by name:"
+      %p
+        = f.text_field :search
+    %div{class: "mb-3"}
+      = f.submit "Search", name: nil, class: "btn btn-secondary"
 
-= form_with url: topics_path, method: :get do |f|
-  %div{class: "field"}
-    = f.label :search, "Search by name:"
-    = f.text_field :search
-  %div{class: "actions"}
-    = f.submit "Search", name: nil
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Categories
-      %th{colspan: "3"}
-
-  %tbody
-    - @topics.each do |topic|
+  %table{class: "table table-bordered table-hover"}
+    %thead{class: "table-primary"}
       %tr
-        %td
-          = topic.name
-        %td
-          = topic.description
-        %td
-          - topic.categories.each do |cat|
-            = cat.name
-            %br
-        %td
-          = link_to 'Discussion', topic
-        %td
-          - if can? :update, topic
-            = link_to 'Edit', edit_topic_path(topic)
-        %td
-          - if can? :destroy, topic
-            = link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Description
+        %th Categories
+        %th{style: "text-align: center", colspan: "3"} Allowable actions
 
-%br
+    %tbody
+      - @topics.each do |topic|
+        %tr{style: "vertical-align: middle"}
+          %td
+            = topic.name
+          %td
+            = topic.description
+          %td
+            - topic.categories.each do |cat|
+              = cat.name
+              %br
+          %td
+            = link_to 'Discussion', topic, class: "btn btn-outline-primary"
+          %td
+            - if can? :update, topic
+              = link_to 'Edit', edit_topic_path(topic), class: "btn btn-outline-primary"
+          %td
+            - if can? :destroy, topic
+              = link_to 'Destroy', topic, method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-outline-danger"
 
-- if can? :create, Topic
-  = link_to 'New Topic', new_topic_path
+  %p
+    - if can? :create, Topic
+      = link_to 'New Topic', new_topic_path, class: "btn btn-success"
