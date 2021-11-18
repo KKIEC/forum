@@ -1,26 +1,28 @@
-%h1 Categories
+%div{class: "container mt-3 text-center"}
+  %h2 Categories:
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th{colspan: "3"}
-
-  %tbody
-    - @categories.each do |category|
+  %table{class: "table table-bordered table-hover"}
+    %thead{class: "table-primary"}
       %tr
-        %td
-          = category.name
-        %td
-          = link_to 'Show', category
-        %td
-          - if can? :update, category
-            = link_to 'Edit', edit_category_path(category)
-        %td
-          - if can? :destroy, category
-            = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th{colspan: "3"} Allowable actions
 
-%br
+    %tbody
+      - @categories.each do |category|
+        %tr{style: "vertical-align: middle"}
+          %td
+            = category.name
+          %td
+            = link_to 'Show', category, class: "btn btn-outline-primary"
+          %td
+            - if can? :update, category
+              = link_to 'Edit', edit_category_path(category), class: "btn btn-outline-primary"
+          %td
+            - if can? :destroy, category
+              = link_to 'Destroy', category, method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-outline-danger"
 
-- if can? :create, Category
-  = link_to 'New Category', new_category_path
+  %p
+    - if can? :create, Category
+      = link_to 'New Category', new_category_path, class: "btn btn-success"

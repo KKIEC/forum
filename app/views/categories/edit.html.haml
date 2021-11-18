@@ -1,7 +1,9 @@
-%h1 Editing Category
+%div{class: "container-fluid mt-3 mb-3 text-center"}
+  %h2 Edit category:
 
-= render 'form', category: @category
+  = render 'form', category: @category
 
-= link_to 'Show', @category
-|
-= link_to 'Back', categories_path
+%div{class: "container text-center"}
+  = link_to 'Show', @category, class: "btn btn-primary"
+  |
+  = link_to 'Back', categories_path, class: "btn btn-primary"

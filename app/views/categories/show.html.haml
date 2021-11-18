@@ -1,34 +1,38 @@
-%p
-  %strong Name:
-  = @category.name
+%div{class: "container mt-3 mb-3 text-center"}
 
-  %strong Created by:
-  = @created_by.name
+  %h2
+    = @category.name
 
-Topics:
+  %p
+    %strong Created by:
+    = @created_by.name
 
-- if @associated_topics.present?
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Description
-        %th{colspan: "3"}
+  %h3
+    Topics:
 
-    %tbody
-      - @associated_topics.each do |topic|
+  - if @associated_topics.present?
+    %table{class: "table table-bordered table-hover"}
+      %thead{class: "table-primary"}
         %tr
-          %td
-            = topic.name
-          %td
-            = topic.description
-          %td
-            = link_to 'Show', topic
-- else
-  "None"
+          %th Name
+          %th Description
+          %th{style: "text-align: center", colspan: "3"} Action
 
-%br
-- if can? :update, @category
-  = link_to 'Edit', edit_category_path(@category)
-  |
-= link_to 'Back', categories_path
+      %tbody
+        - @associated_topics.each do |topic|
+          %tr{style: "vertical-align: middle"}
+            %td
+              = topic.name
+            %td
+              = topic.description
+            %td
+              = link_to 'Show', topic, class: "btn btn-outline-primary"
+  - else
+    %p
+      "None"
+
+  %p
+    - if can? :update, @category
+      = link_to 'Edit', edit_category_path(@category), class: "btn btn-primary"
+      |
+      = link_to 'Back', categories_path, class: "btn btn-primary"
