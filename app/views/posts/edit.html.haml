@@ -1,7 +1,9 @@
-%h1 Editing Post
+%div{class: "container-fluid mt-3 mb-3 text-center"}
+  %h2 Edit post:
 
-= render 'form', post: @post, topic_ref: @topic_ref
+  = render 'form', post: @post, topic_ref: @topic_ref
 
-= link_to 'Show', post_path(@post)
-|
-= link_to 'Back', topic_path(@topic_ref)
+%div{class: "container text-center"}
+  = link_to 'Show', post_path(@post), class: "btn btn-primary"
+  |
+  = link_to 'Back', topic_path(@topic_ref), class: "btn btn-primary"

@@ -1,5 +1,7 @@
-%h1 New Post
+%div{class: "container-fluid mt-3 mb-3 text-center"}
+  %h2 New post:
 
-= render 'form', post: @post, topic_ref: @topic_ref
+  = render 'form', post: @post, topic_ref: @topic_ref
 
-= link_to 'Back', topic_path(@topic_ref)
+%div{class: "container text-center"}
+  = link_to 'Back', topic_path(@topic_ref), class: "btn btn-primary"
