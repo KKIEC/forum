@@ -60,8 +60,10 @@
     <% flash.each do |name, msg| %>
       <% if name=="error" %>
         <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-danger" %>
-      <% else %>
+      <% elsif name=="notice" %>
         <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-success" %>
+      <% else %>
+        <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-warning" %>
       <% end %>
     <% end %>
 
