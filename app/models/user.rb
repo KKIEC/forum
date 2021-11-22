@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :topics, dependent: :restrict_with_exception
   has_many :categories, dependent: :restrict_with_exception
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   before_save :assign_role
 
   def assign_role
