@@ -2,8 +2,8 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_topic, only: [:show, :update, :destroy]
-  before_action :set_topic_ref, only: [:edit, :create, :update]
+  before_action :set_topic, only: %i[show update destroy]
+  before_action :set_topic_ref, only: %i[edit create update]
 
   def show
     @created_by = @post.user
@@ -40,21 +40,20 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(
-        :name,
-        :body,
-        :user_id,
-        :topic_id
-      )
-    end
+  def post_params
+    params.require(:post).permit(
+      :name,
+      :body,
+      :user_id,
+      :topic_id
+    )
+  end
 
-    def set_topic
-      @associated_topic = @post.topic
-    end
+  def set_topic
+    @associated_topic = @post.topic
+  end
 
-    def set_topic_ref
-      @topic_ref = @post.topic_id
-    end
-
+  def set_topic_ref
+    @topic_ref = @post.topic_id
+  end
 end

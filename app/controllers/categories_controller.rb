@@ -8,10 +8,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
     @created_by = @category.user
     @associated_topics = @category.topics
-
   end
 
   def new; end
@@ -43,8 +41,7 @@ class CategoriesController < ApplicationController
 
   private
 
-    def category_params
-      params.require(:category).permit(:name, :user_id)
-    end
-
+  def category_params
+    params.require(:category).permit(:name, :user_id)
+  end
 end

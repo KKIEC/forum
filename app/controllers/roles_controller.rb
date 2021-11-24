@@ -8,11 +8,12 @@ class RolesController < ApplicationController
   end
 
   def show
-    if @role.users.empty?
-      @associated_users = 'None'
-    else
-      @associated_users = @role.users.map(&:name).join(', ')
-    end
+    @associated_users =
+      if @role.users.empty?
+        'None'
+      else
+        @role.users.map(&:name).join(', ')
+      end
   end
 
   def new; end
@@ -42,8 +43,8 @@ class RolesController < ApplicationController
 
   private
 
-    def role_params
-      params.require(:role).permit(:name, :description)
-    end
+  def role_params
+    params.require(:role).permit(:name, :description)
+  end
 
 end

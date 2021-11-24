@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_categories, only: [:new, :create, :edit, :update, :index]
+  before_action :set_categories, only: %i[new create edit update index]
 
   def index
     @topics = Topic.search(params[:search])
@@ -42,17 +42,17 @@ class TopicsController < ApplicationController
 
   private
 
-    def set_categories
-      @categories = Category.order(:name)
-    end
+  def set_categories
+    @categories = Category.order(:name)
+  end
 
-    def topic_params
-      params.require(:topic).permit(
-        :name,
-        :description,
-        :user_id,
-        { category_ids: [] }
-      )
-    end
+  def topic_params
+    params.require(:topic).permit(
+      :name,
+      :description,
+      :user_id,
+      { category_ids: [] }
+    )
+  end
 
 end
