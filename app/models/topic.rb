@@ -7,12 +7,10 @@ class Topic < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
-  def self.search(search)
-    if search
-      where('LOWER(name) LIKE ?', "%#{search.downcase}%")
-    else
-      all
-    end
+  def self.search(query)
+    return all if query.blank?
+
+    where('LOWER(name) LIKE ?', "%#{query.downcase}%")
   end
 
 end

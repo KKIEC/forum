@@ -74,12 +74,12 @@ class UsersController < ApplicationController
     )
   end
 
-  def needs_password?(_user, params)
+  def needs_password?(params)
     params[:password].present?
   end
 
   def successfullly_updated
-    if needs_password?(@user, user_params)
+    if needs_password?(user_params)
       @user.update(user_params)
     else
       @user.update_without_password(user_params)
