@@ -21,12 +21,12 @@
     %h5
       %strong Joined on:
     %p
-      = @joined_on
+      = joined_on(@user)
 
     %h5
       %strong Last logged in on:
     %p
-      = @last_login
+      = last_login(@user)
 
     %h5
       %strong Sign in count:
@@ -36,12 +36,12 @@
     %h5
       %strong Associated topics:
     %p
-      = @associated_topics
+      = associated_topics(@user)
 
     %h5
       %strong Associated categories:
     %p
-      = @associated_categories
+      = associated_categories(@user)
 
 %div.container.text-center.mb-3
   = link_to 'Edit', edit_user_path(@user), class: "btn btn-primary"

@@ -7,14 +7,7 @@ class RolesController < ApplicationController
     @roles = Role.all.order(:name)
   end
 
-  def show
-    @associated_users =
-      if @role.users.empty?
-        'None'
-      else
-        @role.users.map(&:name).join(', ')
-      end
-  end
+  def show; end
 
   def new; end
 

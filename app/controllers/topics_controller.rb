@@ -54,5 +54,4 @@ class TopicsController < ApplicationController
       { category_ids: [] }
     )
   end
-
 end

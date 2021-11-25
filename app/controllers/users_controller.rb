@@ -7,30 +7,7 @@ class UsersController < ApplicationController
     @users = User.all.order(:name)
   end
 
-  def show
-    @joined_on = @user.created_at.to_s(:short)
-
-    @last_login =
-      if @user.current_sign_in_at
-        @user.current_sign_in_at.to_s(:short)
-      else
-        @last_login = 'never'
-      end
-
-    @associated_categories =
-      if @user.categories.empty?
-        'None'
-      else
-        @user.categories.map(&:name).join(', ')
-      end
-
-    @associated_topics =
-      if @user.topics.empty?
-        'None'
-      else
-        @user.topics.map(&:name).join(', ')
-      end
-  end
+  def show; end
 
   def new; end
 

@@ -16,7 +16,7 @@
     %h5
       %strong Associated users:
     %p
-      = @associated_users
+      = associated_users(@role)
 
 %div.container.text-center.mb-3
   = link_to 'Edit', edit_role_path(@role), class: "btn btn-primary"
