@@ -8,8 +8,8 @@ class Ability
       can :manage, :all
     elsif user.member?
       can %i[read create], [Category, Topic, Post]
-      can %i[update destroy], [Category, Topic, Post] do |x|
-        x.user == user
+      can %i[update destroy], [Category, Topic, Post] do |item|
+        item.user == user
       end
     elsif user.novice?
       can :read, [Category, Topic, Post]
