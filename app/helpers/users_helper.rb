@@ -4,11 +4,7 @@ module UsersHelper
   end
 
   def last_login(user)
-    if user.current_sign_in_at
-      user.current_sign_in_at.to_s(:short)
-    else
-      'never'
-    end
+    user.current_sign_in_at&.to_s(:short) || 'Never'
   end
 
   def associated_topics(user)
