@@ -1,9 +1,9 @@
-%div{class: "container-fluid mt-3 mb-3 text-center col-4"}
+%div.container-fluid.mt-3.mb-3.text-center.col-4
   %h2 Edit role:
 
   = render 'form', role: @role
 
-%div{class: "container text-center mb-3"}
+%div.container.text-center.mb-3
   = link_to 'Show', @role, class: "btn btn-primary"
   |
   = link_to 'Back', roles_path, class: "btn btn-primary"

@@ -1,23 +1,23 @@
-%div{class: "container mt-3 mb-3 text-center"}
+%div.container.mt-3.mb-3.text-center
   %h2 Topics:
 
   = form_with url: topics_path, method: :get do |f|
-    %div{class: "container text-center"}
+    %div.container.text-center
       %h5
         = f.label :search, "Search by name:"
       %p
         = f.text_field :search, class: "container col-4"
-    %div{class: "mb-3"}
+    %div.mb-3
       = f.submit "Search", name: nil, class: "btn btn-secondary"
 
-%div{class: "container col-12 text-center"}
-  %table{class: "table table-bordered table-hover"}
-    %thead{class: "table-primary"}
+%div.container.col-12.text-center
+  %table.table.table-bordered.table-hover
+    %thead.table-primary
       %tr
-        %th{class: "col-2"} Name
-        %th{class: "col-6"} Description
-        %th{class: "col-2"} Categories
-        %th{style: "text-align: center", colspan: "3", class: "col-2"} Allowable actions
+        %th.col-2 Name
+        %th.col-6 Description
+        %th.col-2 Categories
+        %th.col-2{style: "text-align: center", colspan: "3"} Allowable actions
 
     %tbody
       - @topics.each do |topic|
@@ -41,6 +41,6 @@
               data: { confirm: 'Are you sure?' },
               class: "btn btn-outline-danger"
 
-  %div{class: "container mb-3"}
+  %div.container.mb-3
     - if can? :create, Topic
       = link_to 'New Topic', new_topic_path, class: "btn btn-success"

@@ -1,4 +1,4 @@
-%div{class: "container mt-3 mb-3 text-center"}
+%div.container.mt-3.mb-3.text-center
 
   %h2
     = @category.name
@@ -10,14 +10,14 @@
   %h3
     Topics:
 
-%div{class: "container col-8 text-center"}
+%div.container.col-8.text-center
   - if @associated_topics.present?
-    %table{class: "table table-bordered table-hover"}
-      %thead{class: "table-primary"}
+    %table.table.table-bordered.table-hover
+      %thead.table-primary
         %tr
-          %th{class: "col-3"} Name
-          %th{class: "col-8"} Description
-          %th{style: "text-align: center", colspan: "3", class: "col-1"} Action
+          %th.col-3 Name
+          %th.col-8 Description
+          %th.col-1{style: "text-align: center", colspan: "3"} Action
 
       %tbody
         - @associated_topics.each do |topic|
@@ -32,7 +32,7 @@
     %p
       "None"
 
-  %div{class: "container text-center mb-3"}
+  %div.container.text-center.mb-3
     - if can? :update, @category
       = link_to 'Edit', edit_category_path(@category), class: "btn btn-primary"
       |

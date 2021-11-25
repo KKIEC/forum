@@ -1,6 +1,6 @@
-%div{class: "container mt-3 mb-3 text-center"}
+%div.container.mt-3.mb-3.text-center
 
-  %h2{class: "mb-3"}
+  %h2.mb-3
     = @topic.name
 
   %p
@@ -15,10 +15,10 @@
   %h3
     Discussion:
 
-%div{class: "container col-8 text-center"}
+%div.container.col-8.text-center
   - if @associated_posts.present?
     - @associated_posts.each do |post|
-      %div{class: "card p-2 m-1"}
+      %div.card.p-2.m-1
         %h5{style: "text-align: left"}
           = post.name
         %p{style: "text-align: left"}
@@ -37,7 +37,7 @@
     %p
       "None"
 
-  %div{class: "container mb-3 mt-3"}
+  %div.container.mb-3.mt-3
     = link_to 'Add post', {controller: "posts", action: "new", topic_ref: @topic},
     class: "btn btn-success"
     |

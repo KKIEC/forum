@@ -1,9 +1,9 @@
-%div{class: "container-fluid mt-3 mb-3 text-center col-6"}
+%div.container-fluid.mt-3.mb-3.text-center.col-6
   %h2 Edit post:
 
   = render 'form', post: @post, topic_ref: @topic_ref
 
-%div{class: "container text-center mb-3"}
+%div.container.text-center.mb-3
   = link_to 'Show', post_path(@post), class: "btn btn-primary"
   |
   = link_to 'Back', topic_path(@topic_ref), class: "btn btn-primary"

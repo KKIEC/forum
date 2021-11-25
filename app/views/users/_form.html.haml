@@ -1,6 +1,6 @@
 = form_with(model: user) do |form|
   - if user.errors.any?
-    %div{class: "alert alert-danger"}
+    %div.alert.alert-danger
       %h3
         = pluralize(user.errors.count, "error")
         prohibited this user from being saved:
@@ -10,20 +10,20 @@
           %li
             = message
 
-  %div{class: "card"}
-    %div{class: "mb-2 mt-3"}
+  %div.card
+    %div.mb-2.mt-3
       %h5
         = form.label :name, "Name:"
       %p
         = form.text_field :name, class: "container col-8"
 
-    %div{class: "mb-2"}
+    %div.mb-2
       %h5
         = form.label :email, "Email:"
       %p
         = form.text_field :email, class: "container col-8"
 
-    %div{class: "mb-2"}
+    %div.mb-2
       %h5
         = form.label :password, "Password:"
       %p
@@ -31,7 +31,7 @@
         placeholder: "Leave blank if unchanged",
         class: "container col-8"
 
-    %div{class: "mb-2"}
+    %div.mb-2
       %h5
         = form.label :role_id, "Select role:"
       %p
@@ -41,5 +41,5 @@
         { prompt: true },
         class: "btn btn-secondary dropdown-toggle col-8")
 
-    %div{class: "mb-3"}
+    %div.mb-3
       = form.submit class: "btn btn-success"

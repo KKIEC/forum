@@ -1,6 +1,6 @@
 = form_with(model: category) do |form|
   - if category.errors.any?
-    %div{class: "alert alert-danger"}
+    %div.alert.alert-danger
       %h3
         = pluralize(category.errors.count, "error")
         prohibited this category from being saved:
@@ -10,12 +10,12 @@
           %li
             = message
 
-  %div{class: "card"}
-    %div{class: "mb-2 mt-3"}
+  %div.card
+    %div.mb-2.mt-3
       %h5
         = form.label :name, "Name:"
       %p
         = form.text_field :name, class: "container col-8"
 
-    %div{class: "mb-3"}
+    %div.mb-3
       = form.submit class: "btn btn-success"

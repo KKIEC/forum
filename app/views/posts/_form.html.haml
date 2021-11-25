@@ -1,6 +1,6 @@
 = form_with(model: post) do |form|
   - if post.errors.any?
-    %div{class: "alert alert-danger"}
+    %div.alert.alert-danger
       %h3
         = pluralize(post.errors.count, "error")
         prohibited this post from being saved:
@@ -10,14 +10,14 @@
           %li
             = message
 
-  %div{class: "card"}
-    %div{class: "mb-2 mt-3"}
+  %div.card
+    %div.mb-2.mt-3
       %h5
         = form.label :name, "Name:"
       %p
         = form.text_area :name, rows: "3", class: "container col-11"
 
-    %div{class: "mb-2"}
+    %div.mb-2
       %h5
         = form.label :body, "Post:"
       %p
@@ -25,5 +25,5 @@
 
     = form.hidden_field :topic_id, value: topic_ref
 
-    %div{class: "mb-3"}
+    %div.mb-3
       = form.submit class: "btn btn-success"
