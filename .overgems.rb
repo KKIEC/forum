@@ -1,4 +1,4 @@
 source 'https://rubygems.org' do
-  gem 'rubocop'
+  gem 'rubocop-rails', require: false
   gem 'overcommit'
 end
