@@ -1,18 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  context 'validations tests' do
-    it 'should return newly created category' do
-      r1 = Role.create!(name: 'Admin', description: 'Desc')
-      user = User.create!(name: 'Test user', email: 'test@example.com', password: 'xxxxxxxx', role_id: r1.id)
-      category = Category.new(name: 'Test category', user_id: user.id)
+  let(:user) { create(:user) }
+  let(:category) { create(:category, user: user) }
+
+  describe 'validations' do
+    it 'returns newly created category' do
       expect(category.valid?).to eq(true)
     end
 
-    it 'test name presence' do
-      r1 = Role.create!(name: 'Admin', description: 'Desc')
-      user = User.create!(name: 'Test user', email: 'test@example.com', password: 'xxxxxxxx', role_id: r1.id)
-      category = Category.new(user_id: user.id)
+    it 'checks name presence' do
+      category.name = nil
       expect(category.valid?).to eq(false)
     end
   end
