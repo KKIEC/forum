@@ -33,13 +33,13 @@
 
     %div.mb-2
       %h5
-        = form.label :role_id, "Select role:"
+        = form.label :role, "Select role:"
       %p
-        = collection_select(:user, :role_id, Role.all,
-        :id,
-        :name,
-        { prompt: true },
-        class: "btn btn-secondary dropdown-toggle col-8")
+        = collection_select(:user, :role, User.roles,
+          :first,
+          :first,
+          { prompt: true },
+          class: "btn btn-secondary dropdown-toggle col-8")
 
     %div.mb-3
       = form.submit class: "btn btn-success"

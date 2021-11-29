@@ -3,28 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :role, optional: true
   has_many :posts, dependent: :destroy
   has_many :topics, dependent: :restrict_with_exception
   has_many :categories, dependent: :restrict_with_exception
 
+  enum role: %i[novice member admin], _default: 'novice'
+
   validates :name, presence: true, uniqueness: true
-  before_save :assign_role
-
-  def assign_role
-    self.role = Role.find_by name: 'Novice' if role.nil?
-  end
-
-  def admin?
-    role.name == 'Admin'
-  end
-
-  def member?
-    role.name == 'Member'
-  end
-
-  def novice?
-    role.name == 'Novice'
-  end
 
 end

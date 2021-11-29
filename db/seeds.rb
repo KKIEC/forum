@@ -1,11 +1,7 @@
-r1 = Role.create({ name: 'Admin', description: 'Can do everything' })
-r2 = Role.create({ name: 'Member', description: 'Can do all on things created by own' })
-r3 = Role.create({ name: 'Novice', description: 'Can perform CRUD on own posts' })
-
-u1 = User.create({ name: 'Krzychu', email: 'krzychu@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role_id: r1.id })
-u2 = User.create({ name: 'Asia', email: 'asia@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role_id: r2.id })
-u3 = User.create({ name: 'Fred', email: 'fred@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role_id: r2.id })
-u4 = User.create({ name: 'Wojtek', email: 'wojtek@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role_id: r3.id })
+u1 = User.create({ name: 'Krzychu', email: 'krzychu@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role: 'admin' })
+u2 = User.create({ name: 'Asia', email: 'asia@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role: 'member' })
+u3 = User.create({ name: 'Fred', email: 'fred@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role: 'member' })
+u4 = User.create({ name: 'Wojtek', email: 'wojtek@example.com', password: "xxxxxxxx", password_confirmation: "xxxxxxxx", role: 'novice' })
 
 c1 = Category.create({ name: 'Category A', user_id: u1.id})
 c2 = Category.create({ name: 'Category B', user_id: u1.id})
