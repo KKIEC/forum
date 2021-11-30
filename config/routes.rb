@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
-
-  resources :roles
-
   scope '/admin' do
     resources :users
   end

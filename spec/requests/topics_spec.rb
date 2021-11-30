@@ -44,47 +44,59 @@ RSpec.describe 'Topics', type: :request do
     end
 
     describe 'POST #create' do
+      subject do
+        post '/topics', params: { topic: valid_attributes }
+      end
+
       it 'creates new topic' do
-        expect { post '/topics', params: { topic: valid_attributes } }.to change(Topic, :count).by(1)
+        expect { subject }.to change(Topic, :count).by(1)
       end
 
       it 'shows newly created topic' do
         topic
-        post '/topics', params: { topic: valid_attributes }
+        subject
         expect(response).to redirect_to(topic_url(Topic.last))
       end
 
       it 'flashes notice' do
-        post '/topics', params: { topic: valid_attributes }
+        subject
         expect(flash[:notice]).to be_present
       end
     end
 
     describe 'PUT #update' do
-      it 'updates topic and redirects to updated topic' do
+      subject do
         put "/topics/#{topic.id}", params: { topic: valid_attributes }
+      end
+
+      it 'updates topic and redirects to updated topic' do
+        subject
         expect(response).to redirect_to(topic_url(topic))
       end
 
       it 'updates topic and flash notice' do
-        put "/topics/#{topic.id}", params: { topic: valid_attributes }
+        subject
         expect(flash[:notice]).to be_present
       end
     end
 
     describe 'DELETE #destroy' do
+      subject do
+        delete "/topics/#{topic.id}"
+      end
+
       it 'destroys requested object' do
         topic
-        expect { delete "/topics/#{topic.id}" }.to change(Topic, :count).by(-1)
+        expect { subject }.to change(Topic, :count).by(-1)
       end
 
       it 'destroys and flashes notice' do
-        delete "/topics/#{topic.id}"
+        subject
         expect(flash[:notice]).to be_present
       end
 
       it 'destroys and redirects to topics' do
-        delete "/topics/#{topic.id}"
+        subject
         expect(response).to redirect_to(topics_url)
       end
     end

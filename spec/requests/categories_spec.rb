@@ -43,47 +43,59 @@ RSpec.describe 'Categories', type: :request do
     end
 
     describe 'POST #create' do
+      subject do
+        post '/categories', params: { category: valid_attributes }
+      end
+
       it 'creates new category' do
-        expect { post '/categories', params: { category: valid_attributes } }.to change(Category, :count).by(1)
+        expect { subject }.to change(Category, :count).by(1)
       end
 
       it 'shows newly created category' do
         category
-        post '/categories', params: { category: valid_attributes }
+        subject
         expect(response).to redirect_to(category_url(Category.last))
       end
 
       it 'flashes notice' do
-        post '/categories', params: { category: valid_attributes }
+        subject
         expect(flash[:notice]).to be_present
       end
     end
 
     describe 'PUT #update' do
-      it 'updates category and redirects to updated category' do
+      subject do
         put "/categories/#{category.id}", params: { category: valid_attributes }
+      end
+
+      it 'updates category and redirects to updated category' do
+        subject
         expect(response).to redirect_to(category_url(category))
       end
 
       it 'updates category and flash notice' do
-        put "/categories/#{category.id}", params: { category: valid_attributes }
+        subject
         expect(flash[:notice]).to be_present
       end
     end
 
     describe 'DELETE #destroy' do
+      subject do
+        delete "/categories/#{category.id}"
+      end
+
       it 'destroys requested object' do
         category
-        expect { delete "/categories/#{category.id}" }.to change(Category, :count).by(-1)
+        expect { subject }.to change(Category, :count).by(-1)
       end
 
       it 'destroys and flashes notice' do
-        delete "/categories/#{category.id}"
+        subject
         expect(flash[:notice]).to be_present
       end
 
       it 'destroys and redirects to categories' do
-        delete "/categories/#{category.id}"
+        subject
         expect(response).to redirect_to(categories_url)
       end
     end

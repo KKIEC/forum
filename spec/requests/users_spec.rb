@@ -44,45 +44,57 @@ RSpec.describe 'Users', type: :request do
     end
 
     describe 'POST #create' do
+      subject do
+        post '/admin/users', params: { user: valid_attributes }
+      end
+
       it 'creates new user' do
-        expect { post '/admin/users', params: { user: valid_attributes } }.to change(User, :count).by(1)
+        expect { subject }.to change(User, :count).by(1)
       end
 
       it 'shows newly created user' do
-        post '/admin/users', params: { user: valid_attributes }
+        subject
         expect(response).to redirect_to(user_url(User.last))
       end
 
       it 'flashes notice' do
-        post '/admin/users', params: { user: valid_attributes }
+        subject
         expect(flash[:notice]).to be_present
       end
     end
 
     describe 'PUT #update' do
-      it 'updates user and redirects to updated user' do
+      subject do
         put "/admin/users/#{user.id}", params: { user: valid_attributes }
+      end
+
+      it 'updates user and redirects to updated user' do
+        subject
         expect(response).to redirect_to(user_url(user))
       end
 
       it 'updates user and flash notice' do
-        put "/admin/users/#{user.id}", params: { user: valid_attributes }
+        subject
         expect(flash[:notice]).to be_present
       end
     end
 
     describe 'DELETE #destroy' do
+      subject do
+        delete "/admin/users/#{user.id}"
+      end
+
       it 'destroys requested object' do
-        expect { delete "/admin/users/#{user.id}" }.to change(User, :count).by(-1)
+        expect { subject }.to change(User, :count).by(-1)
       end
 
       it 'destroys and flashes notice' do
-        delete "/admin/users/#{user.id}"
+        subject
         expect(flash[:notice]).to be_present
       end
 
       it 'destroys and redirects to users' do
-        delete "/admin/users/#{user.id}"
+        subject
         expect(response).to redirect_to(users_url)
       end
     end
