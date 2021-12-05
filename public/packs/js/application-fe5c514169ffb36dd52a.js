@@ -150,9 +150,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+__webpack_require__(/*! ../src/index */ "./app/javascript/src/index.js");
+
 _rails_ujs__WEBPACK_IMPORTED_MODULE_0___default.a.start();
 turbolinks__WEBPACK_IMPORTED_MODULE_1___default.a.start();
 _rails_activestorage__WEBPACK_IMPORTED_MODULE_2__["start"]();
+
+/***/ }),
+
+/***/ "./app/javascript/src/index.js":
+/*!*************************************!*\
+  !*** ./app/javascript/src/index.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+document.addEventListener('DOMContentLoaded', function () {
+  var flashMessage = document.querySelector('div[id^="flash_"]');
+
+  if (flashMessage) {
+    setTimeout(function () {
+      flashMessage.classList.add('hide');
+      flashMessage.classList.remove('show');
+      setTimeout(function () {
+        flashMessage.parentElement.removeChild(flashMessage);
+      }, 1500);
+    }, 2000);
+  }
+});
 
 /***/ }),
 
@@ -12462,4 +12488,4 @@ module.exports = function (module) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=application-0cc7caaf9ac82881b305.js.map
+//# sourceMappingURL=application-fe5c514169ffb36dd52a.js.map

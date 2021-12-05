@@ -20,7 +20,7 @@ PreCommit:
     enabled: true
 
   HardTabs:
-    enabled: true
+    enabled: false
 
   ImageOptim:
     enabled: false
@@ -32,7 +32,7 @@ PreCommit:
     enabled: false
 
   JsHint:
-    enabled: true
+    enabled: false
 
   JsonSyntax:
     enabled: true
