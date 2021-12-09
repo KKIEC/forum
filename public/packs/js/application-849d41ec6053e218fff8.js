@@ -166,23 +166,46 @@ __webpack_require__(/*! ../src/destroyalert */ "./app/javascript/src/destroyaler
 /*!********************************************!*\
   !*** ./app/javascript/src/destroyalert.js ***!
   \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-//$(document).addEventListener('DOMContentLoaded',() => {
-//  var flashMessage = $('div[id^="flash_"]');
-//  if (flashMessage) {
-//    setTimeout(() => {
-//      flashMessage.parentElement.removeChild(flashMessage);
-//    }, 2000);
-//  };
-//});
-//$( document ).ready(function() {
-//  var flashMessage = $('div[id^="flash_"]');
-//  if (flashMessage) {
-//    flashMessage.delay(2000).parent().remove(flashMessage);
-//  };
-//});
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _rails_ujs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @rails/ujs */ "./node_modules/@rails/ujs/lib/assets/compiled/rails-ujs.js");
+/* harmony import */ var _rails_ujs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_rails_ujs__WEBPACK_IMPORTED_MODULE_0__);
+
+var skipConfirmation = false;
+
+_rails_ujs__WEBPACK_IMPORTED_MODULE_0___default.a.confirm = function (message, element) {
+  if (skipConfirmation) {
+    return true;
+  }
+
+  ;
+  var modal = document.getElementById("myModal");
+
+  function onConfirm() {
+    skipConfirmation = true;
+    element.click();
+    skipConfirmation = false;
+  }
+
+  ;
+  modal.style.display = "block";
+  var btnYes = document.getElementById("btnYes");
+  var btnNo = document.getElementById("btnNo");
+
+  btnYes.onclick = function () {
+    modal.style.display = "none";
+    onConfirm();
+  };
+
+  btnNo.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  return false;
+};
 
 /***/ }),
 
@@ -191,24 +214,20 @@ __webpack_require__(/*! ../src/destroyalert */ "./app/javascript/src/destroyaler
   !*** ./app/javascript/src/flashmessage.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-document.addEventListener('DOMContentLoaded', function () {
-  var flashMessage = document.querySelector('div[id^="flash_"]');
+/* WEBPACK VAR INJECTION */(function($) {$(function () {
+  var flashMessage = $('div[id^="flash_"]');
 
   if (flashMessage) {
     setTimeout(function () {
-      flashMessage.parentElement.removeChild(flashMessage);
+      flashMessage.remove();
     }, 2000);
   }
 
   ;
-}); //$( document ).ready(function() {
-//  var flashMessage = $('div[id^="flash_"]');
-//  if (flashMessage) {
-//    flashMessage.delay(2000).parent().remove(flashMessage);
-//  };
-//});
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery/src/jquery */ "./node_modules/jquery/src/jquery.js")))
 
 /***/ }),
 
@@ -33071,4 +33090,4 @@ module.exports = function (module) {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=application-0c3726df84c44baa3e22.js.map
+//# sourceMappingURL=application-849d41ec6053e218fff8.js.map

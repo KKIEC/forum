@@ -11,7 +11,7 @@ PreCommit:
     enabled: true
 
   CssLint:
-    enabled: true
+    enabled: false
 
   EsLint:
     enabled: false

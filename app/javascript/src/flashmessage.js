@@ -1,17 +1,9 @@
-document.addEventListener('DOMContentLoaded',() => {
-  const flashMessage = document.querySelector('div[id^="flash_"]');
+$( () => {
+  const flashMessage = $('div[id^="flash_"]');
 
   if (flashMessage) {
     setTimeout(() => {
-      flashMessage.parentElement.removeChild(flashMessage);
+      flashMessage.remove();
     }, 2000);
   };
 });
-
-//$( document ).ready(function() {
-//  var flashMessage = $('div[id^="flash_"]');
-
-//  if (flashMessage) {
-//    flashMessage.delay(2000).parent().remove(flashMessage);
-//  };
-//});

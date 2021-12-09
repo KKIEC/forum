@@ -1,18 +1,34 @@
-//$(document).addEventListener('DOMContentLoaded',() => {
-//  var flashMessage = $('div[id^="flash_"]');
+import Rails from '@rails/ujs';
 
-//  if (flashMessage) {
-//    setTimeout(() => {
-//      flashMessage.parentElement.removeChild(flashMessage);
-//    }, 2000);
-//  };
-//});
+let skipConfirmation = false;
 
+Rails.confirm = function(message, element) {
 
-//$( document ).ready(function() {
-//  var flashMessage = $('div[id^="flash_"]');
+  if (skipConfirmation) {
+    return true;
+  };
 
-//  if (flashMessage) {
-//    flashMessage.delay(2000).parent().remove(flashMessage);
-//  };
-//});
+  const modal = document.getElementById("myModal");
+
+  function onConfirm() {
+    skipConfirmation = true;
+    element.click();
+    skipConfirmation = false;
+  };
+
+  modal.style.display = "block";
+
+  const btnYes = document.getElementById("btnYes");
+  const btnNo = document.getElementById("btnNo");
+
+  btnYes.onclick = function() {
+    modal.style.display = "none";
+    onConfirm();
+  };
+
+  btnNo.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  return false;
+};
