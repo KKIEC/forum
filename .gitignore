@@ -27,6 +27,8 @@
 !/storage/.keep
 
 /public/assets
+/public/packs
+/public/packs-test
 
 .byebug_history
 

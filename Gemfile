@@ -64,3 +64,4 @@ gem 'haml-rails'
 gem 'devise'
 gem 'cancancan'
 gem 'rubocop-rails', require: false
+gem 'pry'
