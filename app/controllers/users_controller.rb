@@ -65,9 +65,10 @@ class UsersController < ApplicationController
   end
 
   def not_delete_last_admin
-    return unless User.where(role: 'admin').count <= 1
+    @user = User.find(params[:id])
+    return unless (User.where(role: 'admin').count <= 1) && (@user.role == 'admin')
 
     redirect_to users_url
-    flash[:error] = 'You are the last admin!!!'
+    flash[:error] = 'You want to destroy the last admin!!!'
   end
 end
