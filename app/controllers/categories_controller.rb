@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @created_by = @category.user
+    @user = @category.user
     @associated_topics = @category.topics
   end
 

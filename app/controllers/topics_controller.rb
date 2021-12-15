@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @created_by = @topic.user
+    @user = @topic.user
     @associated_posts = @topic.posts
   end
 

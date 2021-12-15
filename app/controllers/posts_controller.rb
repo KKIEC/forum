@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :set_topic_ref, only: %i[edit create update]
 
   def show
-    @created_by = @post.user
+    @user = @post.user
   end
 
   def new
