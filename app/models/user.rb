@@ -10,5 +10,11 @@ class User < ApplicationRecord
   enum role: %i[novice member admin], _default: 'novice'
 
   validates :name, presence: true, uniqueness: true
+  validate :at_least_one_admin, on: :update
 
+  def at_least_one_admin
+    return unless (User.admin.count <= 1) && ((role == 'member') || (role == 'novice'))
+
+    errors.add :base, :invalid, message: 'You are the last admin!!!'
+  end
 end

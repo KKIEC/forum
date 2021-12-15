@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
   load_and_authorize_resource
+  before_action :not_delete_last_admin, only: :destroy
 
   def index
     @users = User.all.order(:name)
@@ -61,5 +62,12 @@ class UsersController < ApplicationController
     else
       @user.update_without_password(user_params)
     end
+  end
+
+  def not_delete_last_admin
+    return unless User.where(role: 'admin').count <= 1
+
+    redirect_to users_url
+    flash[:error] = 'You are the last admin!!!'
   end
 end

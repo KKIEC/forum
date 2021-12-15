@@ -22,6 +22,15 @@ RSpec.describe User, type: :model do
       user.password = nil
       expect(user.valid?).to eq(false)
     end
+
+    describe 'at_least_one_admin' do
+      let(:user) { create(:user, role: 'admin') }
+
+      it 'protect from lost the last admin' do
+        user.role = 'member'
+        expect(user.valid?).to eq(false)
+      end
+    end
   end
 
   describe 'enum role' do
