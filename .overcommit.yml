@@ -53,7 +53,7 @@ PreCommit:
     enabled: true
 
   ScssLint:
-    enabled: true
+    enabled: false
   ShellCheck:
     enabled: true
 
