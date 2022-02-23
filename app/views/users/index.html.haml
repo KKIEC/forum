@@ -1,8 +1,8 @@
 %div.container.mt-3.text-center
-  %h2 Users:
+  %h2 Users (admin panel):
 
-%div.container.col-6.text-center
-  %table.table.table-bordered.table-hover.col-6
+%div.container.table-responsive.text-center
+  %table.table.table-bordered.table-hover
     %thead.table-primary
       %tr
         %th.col-3 Name
@@ -27,5 +27,5 @@
             = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },
             class: "btn btn-outline-danger"
 
-  %div.container.mb-3
-    = link_to 'New User', new_user_path, class: "btn btn-success"
+%div.container.text-center.mb-3
+  = link_to 'New User', new_user_path, class: "btn btn-success"
