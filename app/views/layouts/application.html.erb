@@ -12,28 +12,12 @@
 
   <body class="container-flex col-12">
     <div class="d-flex flex-column">
-      <div class="row">
-        <%= render 'layouts/navigation' %>
-      </div>
+      <%= render 'layouts/navigation' %>
     </div>
 
     <%= render 'layouts/messages' %>
     <%= yield %>
-
-    <div id="myModal">
-      <div id="mCont" class="alert alert-danger fade show text-center">
-        <div class="alert-heading">
-          <strong>CONFIRMATION REQUIRED</strong>
-        </div>
-        <div>
-          <p>Do you want permanent destroy this object?</p>
-        </div>
-        <div>
-          <button id="btnYes" class="btn btn-danger">Destroy</button>
-          <button id="btnNo" class="btn btn-secondary">Cancel</button>
-        </div>
-      </div>
-    </div>
+    <%= render 'layouts/modal' %>
 
   </body>
 </html>
