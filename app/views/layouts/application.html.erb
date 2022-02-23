@@ -10,63 +10,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <div class="container-fluid p-2 bg-primary text-white text-center">
-        <h1>Forum</h1>
-          <p>
-            <% if user_signed_in? %>
-              Signed in as: <%= current_user.email %>. Not you?
-          </p>
-          <p>
-              <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-outline-light" %>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %>
-            <% else %>
-          </p>
-          <p>
-              Not logged in.
-          </p>
-          <p>
-              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-light" %> or
-              <%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-light" %>
-            <% end %>
-          </p>
+  <body class="container-flex col-12">
+    <div class="d-flex flex-column">
+      <div class="row">
+        <%= render 'layouts/navigation' %>
       </div>
+    </div>
 
-
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid justify-content-center">
-          <ul class="navbar-nav nav-tabs">
-            <% if current_user&.admin? %>
-              <li class="nav-item">
-                <%= link_to "Users", users_path, class: "nav-link" %>
-              </li>
-            <% end %>
-            <li class="nav-item">
-              <%= link_to "Categories", categories_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Topics", topics_path, class: "nav-link" %>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-    </header>
-
-    <% flash.each do |name, msg| %>
-      <% if name=="error" %>
-        <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-danger" %>
-      <% elsif name=="notice" %>
-        <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-success" %>
-      <% else %>
-        <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-warning" %>
-      <% end %>
-    <% end %>
-
-    <main>
-      <%= yield %>
-    </main>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
 
     <div id="myModal">
       <div id="mCont" class="alert alert-danger fade show text-center">
