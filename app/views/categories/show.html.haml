@@ -1,39 +1,34 @@
-%div.container.mt-3.mb-3.text-center
-
-  %h2
-    = @category.name
-
-  %p
+%div.card.text-center.shadow.rounded.mb-3.mt-3
+  %div.card-header
+    %div.fs-5.fw-bolder
+      = @category.name
+  %div.card-body.text-start
     %strong Created by:
     = created_by(@user)
 
-  %h3
+%div.container.mt-3.text-center
+  %div.mb-3.fs-3.fw-bolder
     Topics:
 
-%div.container.col-8.text-center
+%div.container.mb-3
   - if @associated_topics.present?
-    %table.table.table-bordered.table-hover
-      %thead.table-primary
-        %tr
-          %th.col-3 Name
-          %th.col-8 Description
-          %th.col-1{style: "text-align: center", colspan: "3"} Action
+    - @associated_topics.each do |topic|
+      %div.card.text-center.shadow.rounded.mb-3.mt-3
+        %div.card-header
+          %div.fs-5.fw-bolder
+            = topic.name
+        %div.card-body.text-start
+          %div.fs-5.fw-bolder
+            = topic.description
+        %div.card-footer.text-end
+          = link_to 'Show', topic, class: "btn btn-outline-primary"
 
-      %tbody
-        - @associated_topics.each do |topic|
-          %tr{style: "vertical-align: middle"}
-            %td
-              = topic.name
-            %td
-              = topic.description
-            %td
-              = link_to 'Show', topic, class: "btn btn-outline-primary"
   - else
-    %p
+    %p.text-center
       "None"
 
-  %div.container.text-center.mb-3
-    - if can? :update, @category
-      = link_to 'Edit', edit_category_path(@category), class: "btn btn-primary"
-      |
-      = link_to 'Back', categories_path, class: "btn btn-primary"
+%div.container.text-center.mb-3
+  - if can? :update, @category
+    = link_to 'Edit', edit_category_path(@category), class: "btn btn-outline-primary"
+    |
+    = link_to 'Back', categories_path, class: "btn btn-outline-primary"

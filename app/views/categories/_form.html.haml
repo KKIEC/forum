@@ -1,21 +1,9 @@
+= render 'shared/errors', obj: category
 = form_with(model: category) do |form|
-  - if category.errors.any?
-    %div.alert.alert-danger
-      %h3
-        = pluralize(category.errors.count, "error")
-        prohibited this category from being saved:
+  %div.form-group.row.mb-4
+    = form.label :name, "Name:", class: "col-form-label fs-5 fw-bolder text-start"
+    %div
+      = form.text_field :name, class: "form-control shadow rounded"
 
-      %ul
-        - category.errors.full_messages.each do |message|
-          %li
-            = message
-
-  %div.card
-    %div.mb-2.mt-3
-      %h5
-        = form.label :name, "Name:"
-      %p
-        = form.text_field :name, class: "container col-8"
-
-    %div.mb-3
-      = form.submit class: "btn btn-success"
+  %div.text-end
+    = form.submit class: "btn btn-outline-success shadow"
