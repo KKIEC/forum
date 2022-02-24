@@ -1,7 +1,8 @@
 %div.container.mt-3.text-center
-  %h2 Users (admin panel):
+  %div.mb-3.fs-3.fw-bolder
+    Users (admin panel):
 
-%div.container.table-responsive.text-center
+%div.container.table-responsive.text-center.mb-2
   %table.table.table-bordered.table-hover
     %thead.table-primary
       %tr
@@ -28,4 +29,4 @@
             class: "btn btn-outline-danger"
 
 %div.container.text-center.mb-3
-  = link_to 'New User', new_user_path, class: "btn btn-success"
+  = link_to 'New User', new_user_path, class: "btn btn-outline-success"

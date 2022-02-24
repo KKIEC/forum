@@ -15,7 +15,9 @@
 
     <div id="page-content">
       <%= render 'layouts/messages' %>
-      <%= yield %>
+      <div class="container-sm col-sm-6">
+        <%= yield %>
+      </div>
       <%= render 'layouts/modal' %>
     </div>
 

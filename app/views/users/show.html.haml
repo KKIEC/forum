@@ -1,49 +1,50 @@
-%div.container.mt-3.text-center
-  %h2 User:
+%div.container
+  %div.card.text-center.shadow.rounded.mb-3.mt-3
+    %div.card-header
+      %div.fs-3.fw-bolder
+        User:
+    %div.card-body
+      %h5
+        %strong Name:
+      %p
+        = @user.name
 
-%div.container.col-4.text-center
-  %div.card.p-3.mb-3
-    %h5
-      %strong Name:
-    %p
-      = @user.name
+      %h5
+        %strong Email:
+      %p
+        = @user.email
 
-    %h5
-      %strong Email:
-    %p
-      = @user.email
+      %h5
+        %strong Role:
+      %p
+        = @user.role
 
-    %h5
-      %strong Role:
-    %p
-      = @user.role
+      %h5
+        %strong Joined on:
+      %p
+        = joined_on(@user)
 
-    %h5
-      %strong Joined on:
-    %p
-      = joined_on(@user)
+      %h5
+        %strong Last logged in on:
+      %p
+        = last_login(@user)
 
-    %h5
-      %strong Last logged in on:
-    %p
-      = last_login(@user)
+      %h5
+        %strong Sign in count:
+      %p
+        = @user.sign_in_count
 
-    %h5
-      %strong Sign in count:
-    %p
-      = @user.sign_in_count
+      %h5
+        %strong Associated topics:
+      %p
+        = associated_topics(@user)
 
-    %h5
-      %strong Associated topics:
-    %p
-      = associated_topics(@user)
+      %h5
+        %strong Associated categories:
+      %p
+        = associated_categories(@user)
 
-    %h5
-      %strong Associated categories:
-    %p
-      = associated_categories(@user)
-
-%div.container.text-center.mb-3
-  = link_to 'Edit', edit_user_path(@user), class: "btn btn-primary"
-  |
-  = link_to 'Back', users_path, class: "btn btn-primary"
+    %div.card-footer
+      = link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-primary"
+      |
+      = link_to 'Back', users_path, class: "btn btn-outline-primary"

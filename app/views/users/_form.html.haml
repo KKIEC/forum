@@ -10,34 +10,28 @@
           %li
             = message
 
-  %div.card
-    %div.mb-2.mt-3
-      %h5
-        = form.label :name, "Name:"
-      %p
-        = form.text_field :name, class: "container col-8"
+  %div.form-group.row.mb-2
+    = form.label :name, "Name:", class: "col-form-label fs-5 fw-bolder"
+    %div
+      = form.text_field :name, class: "form-control shadow rounded"
 
-    %div.mb-2
-      %h5
-        = form.label :email, "Email:"
-      %p
-        = form.text_field :email, class: "container col-8"
+  %div.form-group.row.mb-2
+    = form.label :email, "Email:", class: "col-form-label fs-5 fw-bolder"
+    %div
+      = form.text_field :email, class: "form-control shadow rounded"
 
-    %div.mb-2
-      %h5
-        = form.label :password, "Password:"
-      %p
-        = form.password_field :password,
-        placeholder: "Leave blank if unchanged",
-        class: "container col-8"
+  %div.form-group.row.mb-2
+    = form.label :password, "Password:", class: "col-form-label fs-5 fw-bolder"
+    %div
+      = form.password_field :password,
+      placeholder: "Leave blank if unchanged",
+      class: "form-control shadow rounded"
 
-    %div.mb-2
-      %h5
-        = form.label :role, "Select role:"
-      %p
-        = select(:user, :role, User.roles.keys,
-        { prompt: true },
-        class: "btn btn-secondary dropdown-toggle col-8")
+  %div.form-group.row.mb-4
+    = form.label :role, "Select role:", class: "col-form-label fs-5 fw-bolder"
+    %div
+      = select(:user, :role, User.roles.keys,
+      { prompt: true },
+      class: "form-select")
 
-    %div.mb-3
-      = form.submit class: "btn btn-success"
+  = form.submit class: "btn btn-outline-success shadow mb-3"
