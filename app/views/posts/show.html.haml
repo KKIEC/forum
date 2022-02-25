@@ -1,24 +1,24 @@
-%div.container.mt-3.mb-3.text-center
-
-  %h2.mb-3
-    = @post.name
-
-  %p
-    %strong Created by:
-    = created_by(@user)
-
-  %p
-    %strong Owned by:
-    = @associated_topic.name
-
-  %h3
-    Content:
-  %p
-    = @post.body
-
-
-  %div.container.text-center.mb-3
+%div.card.text-center.shadow.rounded.mb-3.mt-3
+  %div.card-header
+    %div.fs-4.fw-bolder
+      = created_by(@user)
+  %div.card-body.text-start
+    %div.fs-6.fw-bolder
+      = @post.name
+    %hr
+    %div.fs-6
+      = @post.body
+    %hr
+    %div.fs-6.fw-bolder
+      Owned by:
+      = @associated_topic.name
+  %div.card-footer.text-end
     - if can? :update, @post
-      = link_to 'Edit', edit_post_path(@post), class: "btn btn-primary"
+      = link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary"
+      - if can? :destroy, @post
+        |
+        = link_to 'Destroy', @post, method: :delete,
+        data: { confirm: 'Are you sure?' },
+        class: "btn btn-outline-danger m-1"
       |
-      = link_to 'Back', @associated_topic, class: "btn btn-primary"
+      = link_to 'Back', @associated_topic, class: "btn btn-outline-primary"

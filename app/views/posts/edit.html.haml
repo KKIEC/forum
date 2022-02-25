@@ -1,9 +1,10 @@
-%div.container-fluid.mt-3.mb-3.text-center.col-6
-  %h2 Edit post:
-
-  = render 'form', post: @post, topic_ref: @topic_ref
-
-%div.container.text-center.mb-3
-  = link_to 'Show', post_path(@post), class: "btn btn-primary"
-  |
-  = link_to 'Back', topic_path(@topic_ref), class: "btn btn-primary"
+%div.container
+  %div.card.text-center.shadow.rounded.mb-3.mt-3
+    %div.card-header.fs-3.fw-bolder
+      Edit post:
+    %div.card-body
+      = render 'form', post: @post, topic_ref: @topic_ref
+    %div.card-footer
+      = link_to 'Show', @post, class: "btn btn-outline-primary"
+      |
+      = link_to 'Back', post_path(@post), class: "btn btn-outline-primary"

@@ -15,15 +15,15 @@
         %div.fs-6
           = truncate(topic.description, length: 100)
       %div.card-footer.text-end
-        = link_to 'Show', topic, class: "btn btn-outline-primary"
+        = link_to 'Discussion', topic, class: "btn btn-outline-primary m-1"
         - if can? :update, topic
           |
-          = link_to 'Edit', edit_topic_path(topic), class: "btn btn-outline-primary"
+          = link_to 'Edit', edit_topic_path(topic), class: "btn btn-outline-primary m-1"
         - if can? :destroy, topic
           |
           = link_to 'Destroy', topic, method: :delete,
           data: { confirm: 'Are you sure?' },
-          class: "btn btn-outline-danger"
+          class: "btn btn-outline-danger m-1"
 
   %div.container.text-center.mb-3
     - if can? :create, Topic

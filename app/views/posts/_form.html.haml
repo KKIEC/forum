@@ -1,29 +1,13 @@
+= render 'shared/errors', obj: post
 = form_with(model: post) do |form|
-  - if post.errors.any?
-    %div.alert.alert-danger
-      %h3
-        = pluralize(post.errors.count, "error")
-        prohibited this post from being saved:
-
-      %ul
-        - post.errors.full_messages.each do |message|
-          %li
-            = message
-
-  %div.card
-    %div.mb-2.mt-3
-      %h5
-        = form.label :name, "Name:"
-      %p
-        = form.text_area :name, rows: "3", class: "container col-11"
-
-    %div.mb-2
-      %h5
-        = form.label :body, "Post:"
-      %p
-        = form.text_area :body, rows: "10", class: "container col-11"
-
+  %div.form-group.row.mb-4
+    = form.label :name, "Name:", class: "col-form-label fs-5 fw-bolder text-start"
+    %div
+      = form.text_area :name, class: "form-control shadow rounded", rows: 3
+    = form.label :body, "Content:", class: "col-form-label fs-5 fw-bolder text-start"
+    %div
+      = form.text_area :body, class: "form-control shadow rounded", rows: 10
     = form.hidden_field :topic_id, value: topic_ref
 
-    %div.mb-3
-      = form.submit class: "btn btn-success"
+  %div.text-end
+    = form.submit class: "btn btn-outline-success shadow"
