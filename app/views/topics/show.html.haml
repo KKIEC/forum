@@ -1,45 +1,42 @@
-%div.container.mt-3.mb-3.text-center
-
-  %h2.mb-3
-    = @topic.name
-
-  %p
+%div.card.text-center.shadow.rounded.mb-3.mt-3
+  %div.card-header
+    %div.fs-4.fw-bolder
+      = @topic.name
+    %div.mt-2
+      - @topic.categories.each do |cat|
+        = link_to cat.name, category_path(cat), class: 'btn btn-outline-secondary btn-sm ms-1'
+  %div.card-body.text-start
     %strong Created by:
     = created_by(@user)
-
-  %p
-    %strong Description:
-  %p
+    %hr
     = @topic.description
+  %div.card-footer.text-end
+    - if can? :update, @topic
+      = link_to 'Edit', edit_topic_path(@topic), class: "btn btn-outline-primary"
+      |
+      = link_to 'Back', topics_path, class: "btn btn-outline-primary"
 
-  %h3
+%div.container.mt-3.text-center
+  %div.mb-3.fs-3.fw-bolder
     Discussion:
 
-%div.container.col-8.text-center
+%div.container.mb-3
   - if @associated_posts.present?
     - @associated_posts.each do |post|
-      %div.card.p-2.m-1
-        %h5{style: "text-align: left"}
-          = post.name
-        %p{style: "text-align: left"}
-          = post.body
-        %p{style: "text-align: right"}
+      %div.card.text-center.shadow.rounded.mb-3.mt-3
+        %div.card-header
+          %div.fs-5.fw-bolder
+            = created_by(post.user)
+        %div.card-body.text-start
+          %div.fs-6.fw-bolder
+            = post.name
+          %hr
+          %div.fs-6
+            = post.body
+        %div.card-footer.text-end
           = link_to 'Details', post, class: "btn btn-outline-primary"
-          - if can? :update, post
-            |
-            = link_to 'Edit', edit_post_path(post), class: "btn btn-outline-primary"
-          - if can? :destroy, post
-            |
-            = link_to 'Delete', post_path(post), method: :delete,
-              data: { confirm: 'Are you sure?' },
-              class: "btn btn-outline-danger"
   - else
-    %p
-      "None"
+    %p.text-center
+      "Discussion is empty."
 
-  %div.container.mb-3.mt-3
-    = link_to 'Add post', {controller: "posts", action: "new", topic_ref: @topic},
-    class: "btn btn-success"
-    |
-    - if can? :update, @topic
-      = link_to 'Edit', edit_topic_path(@topic), class: "btn btn-primary"
+%div.container.text-center.mb-3

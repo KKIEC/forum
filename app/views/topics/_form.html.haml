@@ -1,36 +1,17 @@
+= render 'shared/errors', obj: topic
 = form_with(model: topic) do |form|
-  - if topic.errors.any?
-    %div.alert.alert-danger
-      %h3
-        = pluralize(topic.errors.count, "error")
-        prohibited this topic from being saved:
-
-      %ul
-        - topic.errors.full_messages.each do |message|
-          %li
-            = message
-
-  %div.card
-    %div.mb-2.mt-3
-      %h5
-        = form.label :name, "Name:"
-      %p
-        = form.text_area :name, rows: "2", class: "container col-11"
-
-    %div.mb-2.col-12
-      %h5
-        = form.label :description, "Description:"
-      %p
-        = form.text_area :description, rows: "5", class: "container col-11"
-
-    %div.mb-2
-      %h5
-        = form.label :category_ids, "Select category:"
-      %p
-        = form.collection_check_boxes(:category_ids, @categories, :id, :name) do |b|
-          %p{class: "mb-1"}
-            = b.check_box class: "form-check-input"
-            = b.label
-
-    %div.mb-3
-      = form.submit class: "btn btn-success"
+  %div.form-group.row.mb-4
+    = form.label :name, "Name:", class: "col-form-label fs-5 fw-bolder text-start"
+    %div
+      = form.text_area :name, class: "form-control shadow rounded", rows: 2
+    = form.label :description, "Description:", class: "col-form-label fs-5 fw-bolder text-start"
+    %div
+      = form.text_area :description, class: "form-control shadow rounded", rows: 5
+    = form.label :category_ids, "Select category:", class: "col-form-label fs-5 fw-bolder text-start"
+    %div
+      = form.collection_check_boxes(:category_ids, @categories, :id, :name) do |b|
+        %p{class: "mb-1 text-start"}
+          = b.check_box class: "form-check-input"
+          = b.label
+  %div.text-end
+    = form.submit class: "btn btn-outline-success shadow"
