@@ -5,4 +5,9 @@ class Post < ApplicationRecord
   validates :name, presence: true
   validates :body, presence: true
 
+  def self.search(query)
+    return all if query.blank?
+
+    where('LOWER(name) LIKE ?', "%#{query.downcase}%")
+  end
 end

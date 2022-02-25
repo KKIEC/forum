@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :topics
   resources :posts, except: :index
 
+  get 'search/index'
+
   root to: 'welcome#index'
 
 end

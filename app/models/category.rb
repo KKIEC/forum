@@ -5,4 +5,9 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
+  def self.search(query)
+    return all if query.blank?
+
+    where('LOWER(name) LIKE ?', "%#{query.downcase}%")
+  end
 end

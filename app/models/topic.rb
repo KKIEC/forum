@@ -12,5 +12,4 @@ class Topic < ApplicationRecord
 
     where('LOWER(name) LIKE ?', "%#{query.downcase}%")
   end
-
 end

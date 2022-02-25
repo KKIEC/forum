@@ -20,4 +20,10 @@ class User < ApplicationRecord
 
     errors.add :base, :invalid, message: 'You are the last admin!!!'
   end
+
+  def self.search(query)
+    return all if query.blank?
+
+    where('LOWER(name) LIKE ?', "%#{query.downcase}%")
+  end
 end

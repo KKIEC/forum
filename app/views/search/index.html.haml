@@ -1,0 +1,101 @@
+%div.container.mt-3.text-center
+  %div.mb-3.fs-3.fw-bolder
+    Categories:
+
+%div.container
+  - if @categories.any?
+    - @categories.each do |category|
+      %div.card.text-center.shadow.rounded.mb-3.mt-3
+        %div.card-header.text-start
+          %div.fs-5.fw-bolder
+            = category.name
+        %div.card-body.text-end
+          = link_to 'Details', category, class: "btn btn-outline-primary m-1"
+          - if can? :update, category
+            |
+            = link_to 'Edit', edit_category_path(category), class: "btn btn-outline-primary m-1"
+          - if can? :destroy, category
+            |
+            = link_to 'Destroy', category, method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: "btn btn-outline-danger m-1"
+  - else
+    %div.text-center
+      "No matches."
+
+%div.container.mt-3.text-center
+  %div.mb-3.fs-3.fw-bolder
+    Topics:
+
+%div.container
+  - if @topics.any?
+    - @topics.each do |topic|
+      %div.card.text-center.shadow.rounded.mb-3.mt-3
+        %div.card-header.text-start
+          %div.fs-5.fw-bolder
+            = topic.name
+        %div.card-body.text-end
+          = link_to 'Discussion', topic, class: "btn btn-outline-primary m-1"
+          - if can? :update, topic
+            |
+            = link_to 'Edit', edit_topic_path(topic), class: "btn btn-outline-primary m-1"
+          - if can? :destroy, topic
+            |
+            = link_to 'Destroy', topic, method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: "btn btn-outline-danger m-1"
+  - else
+    %div.text-center
+      "No matches."
+
+- if current_user.admin?
+  %div.container.mt-3.text-center
+    %div.mb-3.fs-3.fw-bolder
+      Posts:
+
+
+  %div.container
+    - if @posts.any?
+      - @posts.each do |post|
+        %div.card.text-center.shadow.rounded.mb-3.mt-3
+          %div.card-header.text-start
+            %div.fs-5.fw-bolder
+              = post.name
+          %div.card-body.text-end
+            = link_to 'Show', post, class: "btn btn-outline-primary"
+            - if can? :update, post
+              |
+              = link_to 'Edit', edit_post_path(post), class: "btn btn-outline-primary"
+            - if can? :destroy, post
+              |
+              = link_to 'Destroy', post, method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-outline-danger"
+    - else
+      %div.text-center
+        "No matches."
+
+  %div.container.mt-3.text-center
+    %div.mb-3.fs-3.fw-bolder
+      Users:
+
+  %div.container
+    - if @users.any?
+      - @users.each do |user|
+        %div.card.text-center.shadow.rounded.mb-3.mt-3
+          %div.card-header.text-start
+            %div.fs-5.fw-bolder
+              = user.name
+          %div.card-body.text-end
+            = link_to 'Show', user, class: "btn btn-outline-primary"
+            - if can? :update, user
+              |
+              = link_to 'Edit', edit_user_path(user), class: "btn btn-outline-primary"
+            - if can? :destroy, user
+              |
+              = link_to 'Destroy', user, method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "btn btn-outline-danger"
+    - else
+      %div.text-center
+        "No matches."

@@ -38,10 +38,10 @@
           </li>
         <% end %>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
+      <%= form_with url: search_index_path, method: :get, class: 'd-flex' do |f| %>
+        <%= f.text_field :search, class: 'form-control me-2', placeholder: 'Search by name' %>
+        <%= f.submit 'Search', name: nil, class: 'btn btn-outline-light me-2' %>
+      <% end %>
     </div>
   </div>
 </nav>
