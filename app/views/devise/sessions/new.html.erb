@@ -1,39 +1,35 @@
-<div class="container-fluid mt-3 mb-3 text-center col-4">
-  <h2>Log in:</h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="card">
-      <div class="mb-2 mt-3">
-        <h5>
-          <%= f.label :email, "Email:" %>
-        </h5>
-        <p>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "container col-8" %>
-        </p>
-      </div>
-
-      <div class="mb-2">
-        <h5>
-          <%= f.label :password, "Password:" %>
-        </h5>
-        <p>
-          <%= f.password_field :password, autocomplete: "current-password", class: "container col-8" %>
-        </p>
-        <p>
-          <% if devise_mapping.rememberable? %>
-            <%= f.check_box :remember_me, class: "form-check-input" %>
-            <%= f.label :remember_me %>
-          <% end %>
-        </p>
-      </div>
-
-      <div class="mb-3">
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+<div class="container">
+  <div class="card text-center shadow rounded mb-3 mt-3">
+    <div class="card-header fs-3 fw-bolder">
+      Sign in:
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group row mb-2 text-start">
+          <%= f.label :email, 'Email:', class: 'col-form-label fs-5 fw-bolder' %>
+          <div>
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control shadow rounded' %>
+          </div>
+        </div>
+        <div class="form-group row mb-4 text-start">
+          <%= f.label :password, "Password:", class: 'col-form-label fs-5 fw-bolder' %>
+          <div>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control shadow rounded" %>
+          </div>
+          <div class="mt-2">
+            <% if devise_mapping.rememberable? %>
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              <%= f.label :remember_me, class: 'form-check-label' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="text-end">
+          <%= f.submit "Log in", class: "btn btn-outline-success" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-footer">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-</div>
-
-<div class="container text-center mb-3">
-  <%= render "devise/shared/links" %>
 </div>
