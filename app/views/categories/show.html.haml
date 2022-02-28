@@ -10,6 +10,13 @@
   %div.mb-3.fs-3.fw-bolder
     Topics:
 
+= will_paginate(@associated_topics,
+  class: 'container custom-pagination text-center',
+  inner_window: 1,
+  outer_window: 0,
+  previous_label: '<',
+  next_label: '>')
+
 %div.container.mb-3
   - if @associated_topics.present?
     - @associated_topics.each do |topic|
@@ -31,3 +38,10 @@
     = link_to 'Edit', edit_category_path(@category), class: "btn btn-outline-primary"
     |
     = link_to 'Back', categories_path, class: "btn btn-outline-primary"
+
+= will_paginate(@associated_topics,
+  class: 'container custom-pagination text-center mb-2',
+  inner_window: 1,
+  outer_window: 0,
+  previous_label: '<',
+  next_label: '>')

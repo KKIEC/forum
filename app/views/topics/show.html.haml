@@ -25,6 +25,13 @@
   %div.mb-3.fs-3.fw-bolder
     Discussion:
 
+= will_paginate(@associated_posts,
+  class: 'container custom-pagination text-center',
+  inner_window: 1,
+  outer_window: 0,
+  previous_label: '<',
+  next_label: '>')
+
 %div.container.mb-3
   - if @associated_posts.present?
     - @associated_posts.each do |post|
@@ -47,3 +54,10 @@
 %div.container.text-center.mb-3
   = link_to 'Add post', {controller: "posts", action: "new", topic_ref: @topic},
   class: "btn btn-outline-success"
+
+= will_paginate(@associated_posts,
+  class: 'container custom-pagination text-center mb-2',
+  inner_window: 1,
+  outer_window: 0,
+  previous_label: '<',
+  next_label: '>')

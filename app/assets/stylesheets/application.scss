@@ -67,3 +67,38 @@ html, body {
   letter-spacing: -1px;
   font-weight: bold;
 }
+
+.custom-pagination {
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+.custom-pagination a, .custom-pagination span, .custom-pagination em {
+  padding: 0.2em 0.5em;
+  margin: 0.15em;
+  display: inline-block;
+}
+.custom-pagination .disabled {
+  color: #6c757d;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+}
+.custom-pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: #0d6efd;
+  color: white;
+  border: 1px solid #0d6efd;
+  border-radius: 0.25rem;
+}
+.custom-pagination a {
+  text-decoration: none;
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+  border-radius: 0.25rem;
+}
+.custom-pagination a:hover, .custom-pagination a:focus {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  border-radius: 0.25rem;
+}

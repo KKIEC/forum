@@ -5,12 +5,12 @@ class TopicsController < ApplicationController
   before_action :set_categories, only: %i[new create edit update index]
 
   def index
-    @topics = Topic.search(params[:search])
+    @topics = Topic.paginate(page: params[:page], per_page: 3)
   end
 
   def show
     @user = @topic.user
-    @associated_posts = @topic.posts
+    @associated_posts = @topic.posts.paginate(page: params[:page], per_page: 3)
   end
 
   def new; end

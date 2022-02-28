@@ -1,6 +1,12 @@
 %div.container.mt-3.text-center
   %div.mb-3.fs-3.fw-bolder
     Topics:
+= will_paginate(@topics,
+  class: 'container custom-pagination text-center',
+  inner_window: 1,
+  outer_window: 0,
+  previous_label: '<',
+  next_label: '>')
 
 %div.container
   - @topics.each do |topic|
@@ -28,3 +34,10 @@
   %div.container.text-center.mb-3
     - if can? :create, Topic
       = link_to 'New Topic', new_topic_path, class: "btn btn-outline-success"
+
+  = will_paginate(@topics,
+    class: 'container custom-pagination text-center mb-2',
+    inner_window: 1,
+    outer_window: 0,
+    previous_label: '<',
+    next_label: '>')

@@ -1,6 +1,12 @@
 %div.container.mt-3.text-center
   %div.mb-3.fs-3.fw-bolder
     Categories:
+= will_paginate(@categories,
+  class: 'container custom-pagination text-center',
+  inner_window: 1,
+  outer_window: 0,
+  previous_label: '<',
+  next_label: '>')
 
 %div.container
   - @categories.each do |category|
@@ -22,3 +28,10 @@
   %div.container.text-center.mb-3
     - if can? :create, Category
       = link_to 'New Category', new_category_path, class: "btn btn-outline-success"
+
+  = will_paginate(@categories,
+    class: 'container custom-pagination text-center mb-2',
+    inner_window: 1,
+    outer_window: 0,
+    previous_label: '<',
+    next_label: '>')
