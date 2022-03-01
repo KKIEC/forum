@@ -13,6 +13,12 @@ RSpec.describe User, type: :model do
       expect(user.valid?).to eq(false)
     end
 
+    it 'checks name uniqueness' do
+      user2 = User.new
+      user2.name = user.name
+      expect(user2.valid?).to eq(false)
+    end
+
     it 'checks email presence' do
       user.email = nil
       expect(user.valid?).to eq(false)
@@ -38,6 +44,17 @@ RSpec.describe User, type: :model do
 
     it 'assigns novice role by default' do
       expect(user.role).to eq('novice')
+    end
+  end
+
+  describe '#search' do
+    let!(:user) { create(:user, email: 'a@example.com') }
+    let!(:user2) { create(:user, name: 'AAbbCC', email: 'b@example.com') }
+
+    it 'returns only user2, despite of upper and lower signs in search field' do
+      users = User.search('aBBc')
+      expect(users.first).to eq(user2)
+      expect(users.count).to eq(1)
     end
   end
 end

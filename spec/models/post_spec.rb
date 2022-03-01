@@ -19,5 +19,21 @@ RSpec.describe Post, type: :model do
       post.body = nil
       expect(post.valid?).to eq(false)
     end
+
+    it 'remains valid without user' do
+      post.user = nil
+      expect(post.valid?).to eq(true)
+    end
+  end
+
+  describe '#search' do
+    let!(:post) { create(:post, user: user, topic: topic) }
+    let!(:post2) { create(:post, name: 'AAbbCC', user: user, topic: topic) }
+
+    it 'returns only topic2, despite of upper and lower signs in search field' do
+      posts = Post.search('aBBc')
+      expect(posts.first).to eq(post2)
+      expect(posts.count).to eq(1)
+    end
   end
 end

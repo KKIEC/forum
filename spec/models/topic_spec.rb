@@ -18,6 +18,11 @@ RSpec.describe Topic, type: :model do
       topic.description = nil
       expect(topic.valid?).to eq(false)
     end
+
+    it 'remains valid without user' do
+      topic.user = nil
+      expect(topic.valid?).to eq(true)
+    end
   end
 
   describe '#search' do
@@ -27,7 +32,7 @@ RSpec.describe Topic, type: :model do
     it 'returns only topic2, despite of upper and lower signs in search field' do
       topics = Topic.search('aBBc')
       expect(topics.first).to eq(topic2)
-      expect(topics.last).to eq(topic2)
+      expect(topics.count).to eq(1)
     end
   end
 end
