@@ -16,8 +16,8 @@
           = topic.name
         %div.fs-6
           (
-          = topic.posts.count
-          posts )
+          = pluralize(topic.posts.count, 'post')
+          )
         %div.mt-2
           - topic.categories.each do |cat|
             = link_to cat.name, category_path(cat), class: 'btn btn-outline-secondary btn-sm ms-1'

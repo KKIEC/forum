@@ -16,8 +16,8 @@
           = category.name
         %div.fs-6
           (
-          = category.topics.count
-          topics )
+          = pluralize(category.topics.count, 'topic')
+          )
       %div.card-body.text-end
         = link_to 'Show', category, class: "btn btn-outline-primary"
         - if can? :update, category
