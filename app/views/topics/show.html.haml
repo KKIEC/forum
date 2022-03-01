@@ -6,8 +6,18 @@
       - @topic.categories.each do |cat|
         = link_to cat.name, category_path(cat), class: 'btn btn-outline-secondary btn-sm ms-1'
   %div.card-body.text-start
-    %strong Created by:
-    = created_by(@user)
+    %div
+      %strong Created by:
+      = created_by(@user)
+      ,
+    %div
+      %strong Created at:
+      = time_ago_in_words(@topic.created_at)
+      ago,
+    %div
+      %strong edited:
+      = time_ago_in_words(@topic.updated_at)
+      ago.
     %hr
     = @topic.description
   %div.card-footer.text-end
@@ -39,6 +49,10 @@
         %div.card-header
           %div.fs-5.fw-bolder
             = created_by(post.user)
+          %div.fs-6
+            (
+            = time_ago_in_words(post.updated_at)
+            ago )
         %div.card-body.text-start
           %div.fs-6.fw-bolder
             = post.name

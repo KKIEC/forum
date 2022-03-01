@@ -2,6 +2,10 @@
   %div.card-header
     %div.fs-4.fw-bolder
       = created_by(@user)
+    %div.fs-6
+      (
+      = time_ago_in_words(@post.updated_at)
+      ago )
   %div.card-body.text-start
     %div.fs-6.fw-bolder
       = @post.name
