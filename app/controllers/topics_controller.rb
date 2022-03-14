@@ -5,12 +5,15 @@ class TopicsController < ApplicationController
   before_action :set_categories, only: %i[new create edit update index]
 
   def index
-    @topics = Topic.paginate(page: params[:page], per_page: 3)
+    @topics = Topic.order('name DESC').paginate(page: params[:page], per_page: 3)
   end
 
   def show
     @user = @topic.user
-    @associated_posts = @topic.posts.paginate(page: params[:page], per_page: 3)
+    @associated_posts = @topic.posts.order('updated_at DESC').paginate(
+      page: params[:page],
+      per_page: 3
+    )
   end
 
   def new; end

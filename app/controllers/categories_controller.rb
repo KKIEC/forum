@@ -4,12 +4,15 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @categories = Category.paginate(page: params[:page], per_page: 5)
+    @categories = Category.order('name ASC').paginate(page: params[:page], per_page: 5)
   end
 
   def show
     @user = @category.user
-    @associated_topics = @category.topics.paginate(page: params[:page], per_page: 3)
+    @associated_topics = @category.topics.order('name ASC').paginate(
+      page: params[:page],
+      per_page: 3
+    )
   end
 
   def new; end
