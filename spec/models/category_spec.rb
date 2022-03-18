@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   let(:user) { create(:user) }
-  let(:category) { create(:category, user: user) }
+  let(:category) { build(:category, user: user) }
 
   describe 'validations' do
     it 'returns newly created category' do
